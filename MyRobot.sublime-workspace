@@ -31,20 +31,69 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "[\n\n    {\n        \"command\": \"gdb_edit_register\",\n        \"keys\": [\"enter\"],\n        \"context\": [{\"key\": \"gdb_running\"}, {\"key\": \"gdb_register_view\"}]\n    },\n    {\n        \"command\": \"gdb_edit_variable\",\n        \"keys\": [\"enter\"],\n        \"context\": [{\"key\": \"gdb_running\"}, {\"key\": \"gdb_variables_view\"}]\n    },\n    {\n        \"command\": \"gdb_expand_variable\",\n        \"keys\": [\"right\"],\n        \"context\": [{\"key\": \"gdb_running\"}, {\"key\": \"gdb_variables_view\"}]\n    },\n    {\n        \"command\": \"gdb_collapse_variable\",\n        \"keys\": [\"left\"],\n        \"context\": [{\"key\": \"gdb_running\"}, {\"key\": \"gdb_variables_view\"}]\n    },\n    {\n        \"command\": \"gdb_input\",\n        \"keys\": [\"shift+f5\"]\n    },\n    {\n        \"command\": \"gdb_toggle_breakpoint\",\n        \"keys\": [\"f9\"]\n    },\n    {\n        \"command\": \"gdb_launch\",\n        \"context\": [{\"key\": \"gdb_running\", \"operator\": \"equal\", \"operand\": false}],\n        \"keys\": [\"f5\"]\n    },\n    {\n        \"command\": \"gdb_exit\",\n        \"context\": [{\"key\": \"gdb_running\", \"operator\": \"equal\", \"operand\": true}],\n        \"keys\": [\"ctrl+f5\"]\n    },\n    {\n        \"command\": \"gdb_continue\",\n        \"context\": [{\"key\": \"gdb_running\", \"operator\": \"equal\", \"operand\": true}],\n        \"keys\": [\"f5\"]\n    },\n    {\n        \"command\": \"gdb_step_over\",\n        \"context\":\n        [\n            {\"key\": \"gdb_running\", \"operator\": \"equal\", \"operand\": true},\n            {\"key\": \"gdb_disassembly_view\", \"operand\": false}\n        ],\n        \"keys\": [\"f10\"]\n    },\n    {\n        \"command\": \"gdb_next_instruction\",\n        \"context\":\n        [\n            {\"key\": \"gdb_running\", \"operator\": \"equal\", \"operand\": true},\n            {\"key\": \"gdb_disassembly_view\", \"operand\": true}\n        ],\n        \"keys\": [\"f10\"]\n    },\n    {\n        \"command\": \"gdb_step_into\",\n        \"context\": [{\"key\": \"gdb_running\", \"operator\": \"equal\", \"operand\": true}],\n        \"keys\": [\"f11\"]\n    },\n    {\n        \"command\": \"gdb_step_out\",\n        \"context\": [{\"key\": \"gdb_running\", \"operator\": \"equal\", \"operand\": true}],\n        \"keys\": [\"shift+f11\"]\n    },\n    {\n        \"command\": \"gdb_open_register_view\",\n        \"context\": [{\"key\": \"gdb_register_view_open\", \"operator\": \"equal\", \"operand\": false }],\n        \"keys\": [\"ctrl+alt+g\"]\n    },\n    {\n        \"command\": \"gdb_open_disassembly_view\",\n        \"context\": [{\"key\": \"gdb_disassembly_view_open\", \"operator\": \"equal\", \"operand\": false }],\n        \"keys\": [\"ctrl+f11\"]\n    },\n    {\n        \"command\": \"gdb_prev_cmd\",\n        \"context\": [{\"key\": \"gdb_input_view\"}],\n        \"keys\": [\"up\"]\n    },\n    {\n        \"command\": \"gdb_next_cmd\",\n        \"context\": [{\"key\": \"gdb_input_view\"}],\n        \"keys\": [\"down\"]\n    }\n]\n",
+			"file": "/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/Default.sublime-keymap",
+			"file_size": 2679,
+			"file_write_time": 130360485114241545,
+			"settings":
+			{
+				"buffer_size": 2679,
+				"line_ending": "Unix",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "/home/ubuntu/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 3739,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeGDB.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 311.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"Package Control: ",
-				"Package Control: Add Repository"
+				"gdb",
+				"Preferences: SublimeGDB Settings – Default"
 			],
 			[
 				"ins",
 				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Git: Pull"
+			],
+			[
+				"git ad",
+				"Git: Add..."
+			],
+			[
+				"Package Control: ",
+				"Package Control: Add Repository"
 			],
 			[
 				"inst",
@@ -59,7 +108,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 528.0
+		"width": 593.0
 	},
 	"console":
 	{
@@ -81,6 +130,11 @@
 	},
 	"file_history":
 	[
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.cc",
+		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
+		"/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeGDB.sublime-settings",
+		"/home/ubuntu/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.sublime-project",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.sublime-project",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Follower.cc",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.h",
@@ -236,8 +290,439 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/Default.sublime-keymap",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2679,
+								2679
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/ubuntu/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3739,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3739,
+								3739
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeGDB.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -279,6 +764,10 @@
 	"output.find_results":
 	{
 		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 192.0
 	},
 	"project": "MyRobot.sublime-project",
 	"replace":
