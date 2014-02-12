@@ -1,6 +1,7 @@
 #pragma once
 
 #include <libplayerc++/playerc++.h>
+#include <boost/smart_ptr/scoped_ptr.hpp>
 
 using namespace PlayerCc;
 
