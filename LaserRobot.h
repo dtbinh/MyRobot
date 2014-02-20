@@ -2,6 +2,7 @@
 
 #include <libplayerc++/playerc++.h>
 #include <boost/smart_ptr/scoped_ptr.hpp>
+#include "CommPoint.h"
 
 using namespace PlayerCc;
 
@@ -12,7 +13,7 @@ const std::string resumeMsg = "resume";
 const int max_msg_len = 256;
 const int locationMsgLen = 11;
 
-class LaserRobot
+class LaserRobot :  public CommPoint
 {
 private:
 	PlayerClient * robot;
@@ -32,13 +33,8 @@ protected:
 	int StopMoving();
 	int StartMoving();
 
-	int CreateListen(int port, int index);
-	int CreateBroadcast(int port, int index);
-	int ListenFromAll(int id, char * msg);
-	int TalkToAll(int id, int index, char * msg);
-
 public:
-	LaserRobot(std::string host, int port);
+	LaserRobot(boost::asio::io_service & io_service, std::string host, int port);
 	~LaserRobot();
 
 	virtual void Run();

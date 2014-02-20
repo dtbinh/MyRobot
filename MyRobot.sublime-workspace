@@ -4,36 +4,16 @@
 		"selected_items":
 		[
 			[
-				"bro",
-				"broadcastIP"
+				"inc",
+				"include"
 			],
 			[
-				"Init",
-				"InitBroadcast"
-			],
-			[
-				"end",
-				"endpoint_iterator"
+				"c",
+				"CommPoint"
 			],
 			[
 				"io",
 				"io_service"
-			],
-			[
-				"inc",
-				"inc	#include \"…\""
-			],
-			[
-				"remo",
-				"remote_endpoint"
-			],
-			[
-				"lo",
-				"localIP"
-			],
-			[
-				"boo",
-				"boost_inc"
 			],
 			[
 				"de",
@@ -42,6 +22,10 @@
 			[
 				"def",
 				"defaultPort"
+			],
+			[
+				"bro",
+				"broadcast_addr"
 			],
 			[
 				"s",
@@ -60,19 +44,43 @@
 	"buffers":
 	[
 	],
-	"build_system": "Packages/Makefile/Make.sublime-build",
+	"build_system": "",
 	"command_palette":
 	{
 		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"gdb",
-				"Preferences: SublimeGDB Settings – Default"
+				"snip",
+				"Snippet: main()"
 			],
 			[
-				"ins",
+				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"alignment",
+				"Preferences: Alignment File Settings – Default"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"intall",
+				"Package Control: Install Package"
+			],
+			[
+				"instll",
+				"Package Control: Install Package"
+			],
+			[
+				"sublimelint",
+				"Preferences: SublimeLint Settings – Default"
+			],
+			[
+				"gdb",
+				"Preferences: SublimeGDB Settings – Default"
 			],
 			[
 				"git",
@@ -87,11 +95,11 @@
 				"Package Control: Add Repository"
 			],
 			[
-				"inst",
+				"ins",
 				"Package Control: Install Package"
 			],
 			[
-				"install",
+				"inst",
 				"Package Control: Install Package"
 			],
 			[
@@ -99,7 +107,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 593.0
+		"width": 528.0
 	},
 	"console":
 	{
@@ -121,51 +129,55 @@
 	},
 	"file_history":
 	[
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.h",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.cc",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPara.h",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommInterface.h",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpClient.h",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpClient.cc",
-		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/ip/impl/address.ipp",
-		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/basic_datagram_socket.hpp",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/README.txt",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.cc",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPara.cc",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.sublime-project",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/makefile",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Follower.h",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.cc",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.h",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Leader.cc",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Udp",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/README 1.txt",
-		"/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeGDB.sublime-settings",
-		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
-		"/home/ubuntu/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
-		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/Default.sublime-keymap",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.cc",
-		"/home/ubuntu/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.sublime-project",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Follower.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/CommPoint.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/CommPoint.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Leader.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.h",
+		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DataBase/CommPoint.cpp",
+		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DataBase/CommPoint.h",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Follower.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Leader.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.cpp",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/ImageProcess/HW/ImageProcessing/testImageProcessing/boostTimeRecorder.cpp",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/Mortgage.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/Investment.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/InvestmentsReport.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/MortgagesReport.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/MSGApplication.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/UserInterface.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/EstimateFundsForWeek.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/Asset.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/AssetManager.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/EstimatedFundsReport.java",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/.DS_Store",
+		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DAT2C.mak",
+		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/CommInterface/UdpClient.cpp",
+		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/CommInterface/UdpClient.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/makefile",
+		"/C/Users/Ding/Dropbox/eBooks/《妖刀记》（实体封面1-31卷+内彩）作者：默默猴.txt",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/README.txt",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.sublime-project",
+		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
+		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/Terminal/Base File.sublime-settings",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.cc",
+		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
+		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/sublimelint/SublimeLint.sublime-settings",
+		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/SublimeGDB/Default.sublime-keymap",
+		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
+		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/User/SublimeGDB.sublime-settings",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.h",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Follower.h",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Leader.h",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Leader.cc",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.h",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.cc",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/makefile",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.cc",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.cc",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/Protocol/H104.cpp",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/Protocol/H104.H",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/mytest.cc",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/README.txt",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/CommInterface/TcpClient.cpp",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/CommInterface/TcpClient.h",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.cpp",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/ImageProcess/HW/ImageProcessing/ImageProcessing/TimeRecorder.h",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DigitalSignature/EvpKey.h",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DigitalSignature/EvpKey.cpp",
@@ -174,7 +186,6 @@
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DigitalSignature/PrivateKey.h",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DigitalSignature/EccPrivateKey.h",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/ScheduleMeeting/.gitignore",
-		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DAT2C.mak",
 		"/C/Users/Ding/SkyDrive/Program/DistributedIntelligenceInRobotics/communicate.c",
 		"/C/Users/Ding/SkyDrive/Program/DistributedIntelligenceInRobotics/communicate.h",
 		"/C/Users/Ding/Downloads/EVM_Matlab_bin-1.1-win64/README",
@@ -245,14 +256,11 @@
 		"/C/Users/Ding/Documents/Visual Studio 2013/Projects/ImageProcessing/ImageProcessing/P1000528.JPG",
 		"/C/ProgramMaterial/DPR2UI20090801/DPR2UI/FileView.cpp",
 		"/C/ProgramMaterial/DPR2UI20090801/DPR2UI/StationView.h",
-		"/C/ProgramMaterial/DPR2UI20090801/DPR2UI/StationView.cpp",
-		"/C/ProgramMaterial/DPR2UI20090801/DPR2UI/FileView.h",
-		"/C/Users/Ding/Dropbox/Photos/Zion/IMG_6718.jpg",
-		"/C/Users/Ding/Dropbox/Public/将夜.txt"
+		"/C/ProgramMaterial/DPR2UI20090801/DPR2UI/StationView.cpp"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -266,11 +274,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"initConnect",
-			"InitConnect",
-			"UdpSession",
-			"itoa",
-			"atoi",
 			"lp.",
 			"pp.",
 			"robot.",
@@ -339,7 +342,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 314.0
+		"height": 205.0
 	},
 	"output.find_results":
 	{
@@ -360,14 +363,6 @@
 		"height": 0.0,
 		"selected_items":
 		[
-			[
-				"udpclient.cc",
-				"UdpClient.cc"
-			],
-			[
-				"ud",
-				"UdpSession.h"
-			]
 		],
 		"width": 0.0
 	},
@@ -394,7 +389,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 240.0,
+	"side_bar_width": 150.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

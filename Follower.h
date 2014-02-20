@@ -12,7 +12,7 @@ private:
 	bool ParseMsg(char * msg);
 
 public:
-	Follower(std::string host, int port);
+	Follower(boost::asio::io_service & io_service, std::string host, int port);
 	~Follower();
 
 	virtual void Run();

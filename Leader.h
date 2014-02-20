@@ -16,7 +16,7 @@ private:
 	void Listen(int countCatchMsgNum);
 
 public:
-	Leader(std::string host, int port);
+	Leader(boost::asio::io_service & io_service, std::string host, int port);
 	~Leader();	
 
 	virtual void Run();

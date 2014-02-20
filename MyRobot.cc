@@ -26,16 +26,19 @@ int main(int argc, char *argv[])
   	  iPort = atoi(argv[1]);
   	}
 
+    boost::asio::io_service io_service;
+    boost::scoped_ptr<boost::asio::io_service::work> work;
+
     if (iPort == defaultPort)
     {
       cout << "Create a leader" << endl;
-      Leader robot(strHost, iPort);
+      Leader robot(io_service, strHost, iPort);
       robot.Run();
     }
     else
     {
       cout << "Create a follower" << endl;
-      Follower robot(strHost, iPort);
+      Follower robot(io_service, strHost, iPort);
       robot.Run();
     }
     

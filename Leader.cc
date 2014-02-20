@@ -11,8 +11,8 @@ const int broadcastChannel = 0;
 const int duration = 20;
 const int follower_num = 5;
 
-Leader::Leader(string host, int port)
-:LaserRobot(host, port)
+Leader::Leader(boost::asio::io_service & io_service, string host, int port)
+:LaserRobot(io_service, host, port)
 {
 	listenID = CreateListen(defaultListenPort, listenChannel);
 	broadcastID = CreateBroadcast(defautBroadCastPort, broadcastChannel);

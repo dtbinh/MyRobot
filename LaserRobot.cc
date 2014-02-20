@@ -1,14 +1,13 @@
 #include "LaserRobot.h"
-#include "Communicate.h"
 
 const int defaultPosition2dProxyPort = 0;
 const int defaultLaserProxyPort = 0;
 
 using namespace std;
 
-
-LaserRobot::LaserRobot(string host, int port)
-:myHost(host),
+LaserRobot::LaserRobot(boost::asio::io_service & io_service, string host, int port)
+:CommPoint(io_service),
+myHost(host),
 myPort(port)
 {
 	robot = new PlayerClient(host, port);
@@ -71,26 +70,6 @@ int LaserRobot::LaserAvoidance()
 
       // write commands to robot
       pp->SetSpeed(newspeed, newturnrate);
-}
-
-int LaserRobot::CreateListen(int port, int index)
-{
-  return create_listen(port, index);
-}
-
-int LaserRobot::CreateBroadcast(int port, int index)
-{
-  return create_broadcast(port, index);
-}
-
-int LaserRobot::ListenFromAll(int id, char * msg)
-{
-  return listen_to_robot(id, msg);
-}
-
-int LaserRobot::TalkToAll(int id, int index, char * msg)
-{
-  return talk_to_all(id, msg, index);
 }
 
 void LaserRobot::Run()

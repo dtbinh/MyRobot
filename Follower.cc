@@ -7,8 +7,8 @@ const int defautBroadCastPort = 9000;
 const int listenChannel = 0;
 const int broadcastChannel = 0; 
 
-Follower::Follower(string host, int port)
-:LaserRobot(host, port)
+Follower::Follower(boost::asio::io_service & io_service, string host, int port)
+:LaserRobot(io_service, host, port)
 {
 	listenID = CreateListen(defaultListenPort, listenChannel);
 	broadcastID = CreateBroadcast(defautBroadCastPort, broadcastChannel);
