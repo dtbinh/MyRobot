@@ -7,11 +7,11 @@ const int defautBroadCastPort = 9000;
 const int listenChannel = 0;
 const int broadcastChannel = 0; 
 
-Follower::Follower(boost::asio::io_service & io_service, string host, int port)
-:LaserRobot(io_service, host, port)
+Follower::Follower(boost::asio::io_service & io_service, string host, int player_port)
+:myPort_(player_port),
+LaserRobot(io_service, defaultListenPort, host, player_port)
 {
-	listenID = CreateListen(defaultListenPort, listenChannel);
-	broadcastID = CreateBroadcast(defautBroadCastPort, broadcastChannel);
+
 }
 
 Follower::~Follower()
@@ -19,74 +19,53 @@ Follower::~Follower()
 	
 }
 
-int Follower::SendLocation()
+void Follower::SendLocation()
 {
+	int x_pos = GetXPos();
+	int y_pos = GetYPos();
+
 	ostringstream msg;
+	msg << myPort_ << "(" << x_pos << ", " << y_pos << ")" << endl;
 
-	int x_pos = pp->GetXPos();
-	int y_pos = pp->GetYPos();
-
-	msg << myPort << "(" << x_pos << ", " << y_pos << ")" << endl;
-
-	char *cstr = new char[msg.str().length() + 1];
-	strcpy(cstr, msg.str().c_str());
-
-	TalkToAll(broadcastID, broadcastChannel, cstr);
+	TalkToAll(msg.str(), defautBroadCastPort);
 
 	cout<<"Send msg: " << msg.str() << endl;
-
-	delete cstr;
-	
-	return 0;
 }
 
-bool Follower::ParseMsg(char * msg)
+bool Follower::ParseMsg(const char * msg)
 {
 	cout <<"Receive msg: "<< msg << endl;
 
-	bool ret = false;
-
-	if (strcmp(msg, startMsg.c_str()) == 0)
+	if(strcmp(msg, stopMsg.c_str()) == 0)
 	{
-		ret = true;
-		StartMoving();
-	}
-	else if(strcmp(msg, resumeMsg.c_str()) == 0)
-	{
-		ret = true;
-		StartMoving();
-	}
-	else if(strcmp(msg, stopMsg.c_str()) == 0)
-	{
-		StopMoving();
 		SendLocation();
+		return false;
 	}
 
-	return ret;
+	return true;
+}
+
+int Follower::handle_read(const unsigned char * buf, size_t bytes_transferred)
+{
+	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2));
+
+	if(bytes_transferred > 0)
+	{	
+		if(ParseMsg((const char *)buf))
+		{
+			cout << "follower is running..." << endl;
+			Walk();
+		}
+		else
+		{
+			Stop();
+		}
+	}
+	
+	return bytes_transferred;
 }
 
 void Follower::Run()
 {
-	cout << "follower is running..." << endl;
-
-	bool bWalk = false;
-
-	for(;;)
-	{
-		int recvBytes = ListenFromAll(listenID, msg);
-		if(recvBytes > 0)
-		{
-			bWalk = ParseMsg(msg);
-		}
-
-		if (bWalk)
-		{
-			LaserAvoidance();	
-		}
-		else
-		{
-			sleep(1);
-		}
-		
-	}
+	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2));
 }

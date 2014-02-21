@@ -4,17 +4,17 @@
 
 class Follower : public LaserRobot
 {
-private:
-	char msg[max_msg_len];
-
-private:
-	int SendLocation();
-	bool ParseMsg(char * msg);
-
 public:
-	Follower(boost::asio::io_service & io_service, std::string host, int port);
+	Follower(boost::asio::io_service & io_service, std::string host, int player_port);
 	~Follower();
 
 	virtual void Run();
-	
+
+private:
+	int handle_read(const unsigned char * buf, size_t bytes_transferred);
+	void SendLocation();
+	bool ParseMsg(const char * msg);
+
+private:
+	int myPort_;
 };

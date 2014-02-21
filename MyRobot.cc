@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
   	}
 
     boost::asio::io_service io_service;
-    boost::scoped_ptr<boost::asio::io_service::work> work;
+    boost::asio::io_service::work work(io_service);
 
     if (iPort == defaultPort)
     {
@@ -41,6 +41,10 @@ int main(int argc, char *argv[])
       Follower robot(io_service, strHost, iPort);
       robot.Run();
     }
+
+    io_service.run();
+    
+    cout << "Robot Exit" << endl;
     
   }
   catch (PlayerCc::PlayerError & e)

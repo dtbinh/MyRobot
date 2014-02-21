@@ -19,14 +19,14 @@ OUTFILE=./$(OUTDIR)/robot
 CFG_INC=-I$(player_inc) -I$(boost_inc) 
 CFG_LIB=$(player_lib) $(boost_lib) 
 CFG_OBJ=
-COMMON_OBJ=$(OUTDIR)/MyRobot.o $(OUTDIR)/LaserRobot.o $(OUTDIR)/Leader.o $(OUTDIR)/Follower.o $(OUTDIR)/Communicate.o $(OUTDIR)/TimeRecorder.o \
+COMMON_OBJ=$(OUTDIR)/MyRobot.o $(OUTDIR)/LaserRobot.o $(OUTDIR)/Follower.o $(OUTDIR)/Leader.o $(OUTDIR)/Communicate.o $(OUTDIR)/TimeRecorder.o \
 $(OUTDIR)/UdpSession.o $(OUTDIR)/CommPoint.o 
 
 OBJ=$(COMMON_OBJ) $(CFG_OBJ)
 ALL_OBJ=$(COMMON_OBJ) $(CFG_LIB) 
 
-COMPILE=$(compiler) -c "-D$(preDef)" -g -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
-LINK=$(linker)  -g -o "$(OUTFILE)" $(ALL_OBJ)
+COMPILE=$(compiler) -c "-D$(preDef)" -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
+LINK=$(linker)  -o "$(OUTFILE)" $(ALL_OBJ)
 
 # Pattern rules
 $(OUTDIR)/%.o : %.cc

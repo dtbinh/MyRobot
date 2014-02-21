@@ -6,36 +6,31 @@
 
 using namespace PlayerCc;
 
-const std::string startMsg = "start";
-const std::string stopMsg = "stop";
-const std::string resumeMsg = "resume";
-
-const int max_msg_len = 256;
-const int locationMsgLen = 11;
-
 class LaserRobot :  public CommPoint
 {
-private:
-	PlayerClient * robot;
-	LaserProxy * lp;
-
-protected:
-	std::string myHost;
-	int myPort;
-	Position2dProxy * pp;
-
-protected:
-	int listenID;
-	int broadcastID;
-
-protected:
-	int LaserAvoidance();
-	int StopMoving();
-	int StartMoving();
-
 public:
-	LaserRobot(boost::asio::io_service & io_service, std::string host, int port);
+	LaserRobot(boost::asio::io_service & io_service, int comm_port, std::string host, int player_port);
 	~LaserRobot();
 
 	virtual void Run();
+
+private:
+	int StopMoving();
+	int StartMoving();
+	void Resume();
+	int LaserAvoidance();
+	void handle_timerWalk(const boost::system::error_code& error);
+
+protected:
+	double GetXPos();
+	double GetYPos();
+	void Walk();
+	void Stop();
+
+private:
+	PlayerClient * robot_;
+	LaserProxy * lp_;
+	Position2dProxy * pp_;
+
+	boost::asio::deadline_timer timerWalk_;
 };

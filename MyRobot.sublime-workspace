@@ -4,28 +4,188 @@
 		"selected_items":
 		[
 			[
+				"fo",
+				"follower_num"
+			],
+			[
+				"loc",
+				"locationMsgLen"
+			],
+			[
+				"cou",
+				"countMsg_"
+			],
+			[
+				"coun",
+				"countMsg_"
+			],
+			[
+				"Lis",
+				"Listen"
+			],
+			[
+				"re",
+				"resumeMsg"
+			],
+			[
+				"start",
+				"startMsg"
+			],
+			[
+				"ha",
+				"handle_timerWalk"
+			],
+			[
+				"laser",
+				"LaserAvoidance"
+			],
+			[
+				"Get",
+				"GetYPos"
+			],
+			[
+				"La",
+				"LaserRobot"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"Send",
+				"SendLocation"
+			],
+			[
+				"hand",
+				"handle_read"
+			],
+			[
+				"byte",
+				"bytes_transferred"
+			],
+			[
+				"han",
+				"handle_read"
+			],
+			[
+				"write",
+				"write_callback"
+			],
+			[
+				"typ",
+				"typeHandleRead"
+			],
+			[
+				"type",
+				"typeHandleWrite"
+			],
+			[
+				"af",
+				"after_write"
+			],
+			[
+				"wri",
+				"write_callback"
+			],
+			[
+				"rea",
+				"read_callback"
+			],
+			[
+				"pri",
+				"private"
+			],
+			[
+				"def",
+				"defautBroadCastPort"
+			],
+			[
+				"player",
+				"player_port"
+			],
+			[
+				"defa",
+				"defautBroadCastPort"
+			],
+			[
+				"star",
+				"startMsg"
+			],
+			[
+				"after",
+				"after_read"
+			],
+			[
+				"iso",
+				"io_service_"
+			],
+			[
+				"had",
+				"handle_write"
+			],
+			[
+				"bor",
+				"broadcastIP"
+			],
+			[
+				"bro",
+				"broadcastPort"
+			],
+			[
+				"Gene",
+				"GenerateBroadcast"
+			],
+			[
+				"get",
+				"getConnectAlive"
+			],
+			[
+				"comm",
+				"comm_channel_"
+			],
+			[
+				"defau",
+				"defaultListenPort"
+			],
+			[
+				"pla",
+				"player_port"
+			],
+			[
 				"inc",
 				"include"
 			],
 			[
-				"c",
+				"Comm",
 				"CommPoint"
+			],
+			[
+				"Init",
+				"InitBroadcast"
+			],
+			[
+				"end",
+				"endpoint_iterator"
 			],
 			[
 				"io",
 				"io_service"
 			],
 			[
+				"remo",
+				"remote_endpoint"
+			],
+			[
+				"lo",
+				"localIP"
+			],
+			[
+				"boo",
+				"boost_inc"
+			],
+			[
 				"de",
 				"defaultLaserProxyPort"
-			],
-			[
-				"def",
-				"defaultPort"
-			],
-			[
-				"bro",
-				"broadcast_addr"
 			],
 			[
 				"s",
@@ -43,44 +203,28 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "MyRobot.cc",
+			"settings":
+			{
+				"buffer_size": 930,
+				"line_ending": "Unix"
+			}
+		}
 	],
-	"build_system": "",
+	"build_system": "Packages/Makefile/Make.sublime-build",
 	"command_palette":
 	{
 		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"snip",
-				"Snippet: main()"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"alignment",
-				"Preferences: Alignment File Settings – Default"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
-			],
-			[
-				"intall",
-				"Package Control: Install Package"
-			],
-			[
-				"instll",
-				"Package Control: Install Package"
-			],
-			[
-				"sublimelint",
-				"Preferences: SublimeLint Settings – Default"
-			],
-			[
 				"gdb",
 				"Preferences: SublimeGDB Settings – Default"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
 			],
 			[
 				"git",
@@ -95,11 +239,11 @@
 				"Package Control: Add Repository"
 			],
 			[
-				"ins",
+				"inst",
 				"Package Control: Install Package"
 			],
 			[
-				"inst",
+				"install",
 				"Package Control: Install Package"
 			],
 			[
@@ -107,7 +251,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 528.0
+		"width": 593.0
 	},
 	"console":
 	{
@@ -129,55 +273,64 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Leader.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.cc",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/CommPoint.cc",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/CommPoint.h",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.h",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Leader.h",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.cc",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.cc",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.h",
-		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DataBase/CommPoint.cpp",
-		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DataBase/CommPoint.h",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.h",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.cc",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Follower.cc",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Leader.cc",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.cpp",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.cc",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/ImageProcess/HW/ImageProcessing/testImageProcessing/boostTimeRecorder.cpp",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/Mortgage.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/Investment.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/InvestmentsReport.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/MortgagesReport.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/MSGApplication.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/UserInterface.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/EstimateFundsForWeek.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/Asset.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/AssetManager.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/EstimatedFundsReport.java",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/MSG_case_study_java/.DS_Store",
-		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DAT2C.mak",
-		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/CommInterface/UdpClient.cpp",
-		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/CommInterface/UdpClient.h",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/makefile",
-		"/C/Users/Ding/Dropbox/eBooks/《妖刀记》（实体封面1-31卷+内彩）作者：默默猴.txt",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/README.txt",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.sublime-project",
-		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
-		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/Terminal/Base File.sublime-settings",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.cc",
-		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
-		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/sublimelint/SublimeLint.sublime-settings",
-		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/SublimeGDB/Default.sublime-keymap",
-		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
-		"/C/Users/Ding/AppData/Roaming/Sublime Text 3/Packages/User/SublimeGDB.sublime-settings",
-		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.h",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Follower.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPoint.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Follower.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPoint.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Follower.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Leader.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/mytest.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Leader.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/makefile",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/noncopyable.hpp",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/checked_delete.hpp",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.sublime-project",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPara.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommInterface.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpClient.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpClient.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/ip/impl/address.ipp",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/basic_datagram_socket.hpp",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/README.txt",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPara.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Udp",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/README 1.txt",
+		"/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeGDB.sublime-settings",
+		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
+		"/home/ubuntu/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/Default.sublime-keymap",
+		"/home/ubuntu/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.sublime-project",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/makefile",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.cc",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/Protocol/H104.cpp",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/Protocol/H104.H",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/mytest.cc",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/README.txt",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/CommInterface/TcpClient.cpp",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/CommInterface/TcpClient.h",
+		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.cpp",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/ImageProcess/HW/ImageProcessing/ImageProcessing/TimeRecorder.h",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DigitalSignature/EvpKey.h",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DigitalSignature/EvpKey.cpp",
@@ -186,6 +339,7 @@
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DigitalSignature/PrivateKey.h",
 		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DigitalSignature/EccPrivateKey.h",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/Software Engineering/hw/ScheduleMeeting/.gitignore",
+		"/C/Users/Ding/SkyDrive/Program/NARI/DAT2/DAT2C/DAT2C.mak",
 		"/C/Users/Ding/SkyDrive/Program/DistributedIntelligenceInRobotics/communicate.c",
 		"/C/Users/Ding/SkyDrive/Program/DistributedIntelligenceInRobotics/communicate.h",
 		"/C/Users/Ding/Downloads/EVM_Matlab_bin-1.1-win64/README",
@@ -246,34 +400,46 @@
 		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/HistogramEQ.cpp",
 		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/Replication.cpp",
 		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/nearest_neighbor.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/bilinear_interpolation.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/PowerScale.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/LogScale.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/HistogramLocal.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/TransImage.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/Graying.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/gray.jpg",
-		"/C/Users/Ding/Documents/Visual Studio 2013/Projects/ImageProcessing/ImageProcessing/P1000528.JPG",
-		"/C/ProgramMaterial/DPR2UI20090801/DPR2UI/FileView.cpp",
-		"/C/ProgramMaterial/DPR2UI20090801/DPR2UI/StationView.h",
-		"/C/ProgramMaterial/DPR2UI20090801/DPR2UI/StationView.cpp"
+		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/bilinear_interpolation.cpp"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"unsigned char",
+			"bind",
+			"locationMsgLen",
+			"max_msg_len",
+			"lp",
+			"pp",
+			"robot",
+			"LaserRobot",
+			"robot",
+			"Robot",
+			"robot",
+			"bind",
+			"ReadFromConnect",
+			"max_msg_len",
+			"myPort",
+			"myHost",
+			"initConnect",
+			"InitConnect",
+			"UdpSession",
+			"itoa",
+			"atoi",
 			"lp.",
 			"pp.",
 			"robot.",
@@ -291,6 +457,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"lp_",
+			"pp_",
+			"robot_",
 			"lp->",
 			"pp->",
 			"robot->"
@@ -304,8 +473,187 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "MyRobot.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 930,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								420,
+								420
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 253.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -342,7 +690,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 205.0
+		"height": 241.0
 	},
 	"output.find_results":
 	{
@@ -355,7 +703,7 @@
 	"project": "MyRobot.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -363,6 +711,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"udpclient.cc",
+				"UdpClient.cc"
+			],
+			[
+				"ud",
+				"UdpSession.h"
+			]
 		],
 		"width": 0.0
 	},
@@ -389,7 +745,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 240.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

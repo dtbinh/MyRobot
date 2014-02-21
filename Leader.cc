@@ -5,17 +5,15 @@ using namespace std;
 
 const int defaultListenPort = 9000;
 const int defautBroadCastPort = 9001;
-const int listenChannel = 0;
-const int broadcastChannel = 0; 
 
 const int duration = 20;
 const int follower_num = 5;
 
-Leader::Leader(boost::asio::io_service & io_service, string host, int port)
-:LaserRobot(io_service, host, port)
+Leader::Leader(boost::asio::io_service & io_service, string host, int player_port)
+:LaserRobot(io_service, defaultListenPort, host, player_port),
+timerCount_(io_service)
 {
-	listenID = CreateListen(defaultListenPort, listenChannel);
-	broadcastID = CreateBroadcast(defautBroadCastPort, broadcastChannel);
+	countMsg_ = 0;
 }
 
 Leader::~Leader()
@@ -23,93 +21,70 @@ Leader::~Leader()
 	
 }
 
-void Leader::Listen(int countCatchMsgNum)
+int Leader::handle_read(const unsigned char * buf, size_t bytes_transferred)
 {
-	sleep(1);
-
-	int recvBytes = ListenFromAll(listenID, msg);
-
-	if(recvBytes > 0)
+	if(bytes_transferred > 0)
 	{
-		cout <<"Recive msg: "<< msg << endl;	
-	}
+		cout <<"Recive msg: "<< buf << endl;	
 
-	countCatchMsgNum += recvBytes / locationMsgLen;
-
-	if(countCatchMsgNum >= follower_num)
-	{
-		Resume();
-	}
-	else 
-	{
-		Listen(countCatchMsgNum);
-	}
-}
-
-void Leader::Walk(TimeRecorder & tr, bool bFirst)
-{
-	double dur = tr.getPeriod();
-	//cout <<"dur = " << dur << endl;
-	
-	if (dur >= duration)
-	{
-		string msg = stopMsg;
-		char *cstr = new char[msg.length() + 1];
-		strcpy(cstr, msg.c_str());
-		TalkToAll(broadcastID, broadcastChannel, cstr);
-		cout<<"Send msg: " << msg << endl;
-
-		if (bFirst)
+		countMsg_ += bytes_transferred / locationMsgLen;
+				
+		if(countMsg_ >= follower_num)
 		{
-			cout << duration << " seconds passed. Current's robot locations are:" << endl;
-			StopMoving();
-			Listen(0);
-		}		
+			countMsg_ = 0;
+			Start(false);
+		}
 		else
 		{
-			StopMoving();
-			cout << duration << " seconds passed. Mission accomplished." << endl;
+			ListenFromAll(boost::bind(&Leader::handle_read, this, _1, _2));	
 		}
+	}
+	
+	return bytes_transferred;
+}
 
-		delete cstr;
+void Leader::handle_timerCount(const boost::system::error_code& error, bool bFirstCount)
+{
+	if (!error)
+  	{
+  		TalkToAll(stopMsg, defautBroadCastPort);
+
+    	if (bFirstCount)
+    	{
+    		cout << duration << " seconds passed. Current's robot locations are:" << endl;
+    		Stop();
+    		ListenFromAll(boost::bind(&Leader::handle_read, this, _1, _2));	
+    	}
+    	else
+    	{
+    		cout << duration << " seconds passed. Mission accomplished." << endl;
+    		Stop();
+    	}
+  	}
+}
+
+void Leader::Start(bool bFirstTime)
+{
+	string msg = "";
+	if (bFirstTime)
+	{
+		msg = startMsg;
 	}
 	else
 	{
-		LaserAvoidance();	
-		Walk(tr, bFirst);
+		msg = resumeMsg;
 	}
-}
 
-void Leader::Resume()
-{
-	string msg = resumeMsg;
-	char *cstr = new char[msg.length() + 1];
-	strcpy(cstr, msg.c_str());
-
-	TalkToAll(broadcastID, broadcastChannel, cstr);
+	TalkToAll(msg, defautBroadCastPort);
 	cout<<"Send msg: " << msg << endl;
 
-	cout << "All robots resume safewalking." << endl;
+	cout<<"All robots "<<msg<<" safewalking."<<endl;
 
-	StartMoving();
-    TimeRecorder tr;
-	Walk(tr, false);
-}
+	timerCount_.expires_from_now(boost::posix_time::seconds(duration));
+  	timerCount_.async_wait(boost::bind(&Leader::handle_timerCount, this, boost::asio::placeholders::error, bFirstTime));
 
-void Leader::Start()
-{
-	string msg = startMsg;
-	char *cstr = new char[msg.length() + 1];
-	strcpy(cstr, msg.c_str());
-
-	TalkToAll(broadcastID, broadcastChannel, cstr);
-	cout<<"Send msg: " << msg << endl;
-
-	cout<<"All robots start safewalking."<<endl;
-
-	StartMoving();
-    TimeRecorder tr;
-	Walk(tr, true);
+	cout << "leader is running..." << endl;
+  	Walk();
 }
 
 void Leader::Run()
@@ -121,11 +96,11 @@ void Leader::Run()
 	switch(cmd)
 	{
 		case 's':
-			Start();
+			Start(true);
 			break;
 
 		case 'S':
-			Start();
+			Start(true);
 			break;
 
 		default:
