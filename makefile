@@ -25,8 +25,8 @@ $(OUTDIR)/UdpSession.o $(OUTDIR)/CommPoint.o
 OBJ=$(COMMON_OBJ) $(CFG_OBJ)
 ALL_OBJ=$(COMMON_OBJ) $(CFG_LIB) 
 
-COMPILE=$(compiler) -c "-D$(preDef)" -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
-LINK=$(linker)  -o "$(OUTFILE)" $(ALL_OBJ)
+COMPILE=$(compiler) -c "-D$(preDef)" -g -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
+LINK=$(linker)  -g -o "$(OUTFILE)" $(ALL_OBJ)
 
 # Pattern rules
 $(OUTDIR)/%.o : %.cc
