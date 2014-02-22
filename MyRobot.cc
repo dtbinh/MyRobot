@@ -26,23 +26,24 @@ int main(int argc, char *argv[])
   	  iPort = atoi(argv[1]);
   	}
 
-    boost::asio::io_service io_service;
-    boost::asio::io_service::work work(io_service);
+    boost::asio::io_service io_service_;
+    boost::asio::io_service::work work_(io_service_);
 
+    boost::shared_ptr<LaserRobot> robot;
     if (iPort == defaultPort)
     {
       cout << "Create a leader" << endl;
-      Leader robot(io_service, strHost, iPort);
-      robot.Run();
+      robot.reset(new Leader(io_service_, strHost, iPort));
+      robot->Run();
     }
     else
     {
       cout << "Create a follower" << endl;
-      Follower robot(io_service, strHost, iPort);
-      robot.Run();
+      robot.reset(new Follower(io_service_, strHost, iPort));
+      robot->Run();
     }
 
-    io_service.run();
+    io_service_.run();
     
     cout << "Robot Exit" << endl;
     

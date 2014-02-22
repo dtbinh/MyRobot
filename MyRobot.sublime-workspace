@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"han",
+				"handle_write"
+			],
+			[
+				"wir",
+				"write_callback"
+			],
+			[
+				"re",
+				"read_callback"
+			],
+			[
+				"if",
+				"if(!error"
+			],
+			[
+				"read",
+				"read_callback"
+			],
+			[
+				"se",
+				"set_option"
+			],
+			[
+				"def",
+				"defautBroadCastPort"
+			],
+			[
+				"loca",
+				"localPort"
+			],
+			[
+				"boost",
+				"boost::scoped_ptr"
+			],
+			[
 				"Start",
 				"StartMoving"
 			],
@@ -26,10 +62,6 @@
 			[
 				"Lis",
 				"Listen"
-			],
-			[
-				"re",
-				"resumeMsg"
 			],
 			[
 				"start",
@@ -68,10 +100,6 @@
 				"bytes_transferred"
 			],
 			[
-				"han",
-				"handle_read"
-			],
-			[
 				"write",
 				"write_callback"
 			],
@@ -98,10 +126,6 @@
 			[
 				"pri",
 				"private"
-			],
-			[
-				"def",
-				"defautBroadCastPort"
 			],
 			[
 				"player",
@@ -208,10 +232,10 @@
 	"buffers":
 	[
 		{
-			"file": "LaserRobot.cc",
+			"file": "UdpSession.cc",
 			"settings":
 			{
-				"buffer_size": 2245,
+				"buffer_size": 3240,
 				"line_ending": "Windows"
 			}
 		},
@@ -219,32 +243,120 @@
 			"file": "MyRobot.cc",
 			"settings":
 			{
-				"buffer_size": 969,
+				"buffer_size": 1040,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Leader.cc",
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/task_io_service_operation.hpp",
 			"settings":
 			{
-				"buffer_size": 2011,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "LaserRobot.h",
-			"settings":
-			{
-				"buffer_size": 680,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Communicate.cc",
-			"settings":
-			{
-				"buffer_size": 4849,
+				"buffer_size": 1970,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/impl/epoll_reactor.ipp",
+			"settings":
+			{
+				"buffer_size": 18059,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/bind/bind.hpp",
+			"settings":
+			{
+				"buffer_size": 57437,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/bind/bind_template.hpp",
+			"settings":
+			{
+				"buffer_size": 14071,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/function/function_template.hpp",
+			"settings":
+			{
+				"buffer_size": 39355,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/bind_handler.hpp",
+			"settings":
+			{
+				"buffer_size": 13485,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/handler_invoke_hook.hpp",
+			"settings":
+			{
+				"buffer_size": 2750,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/handler_invoke_helpers.hpp",
+			"settings":
+			{
+				"buffer_size": 1748,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/reactive_socket_recvfrom_op.hpp",
+			"settings":
+			{
+				"buffer_size": 4554,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Follower.cc",
+			"settings":
+			{
+				"buffer_size": 1288,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/bind/mem_fn_template.hpp",
+			"settings":
+			{
+				"buffer_size": 26529,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "CommPoint.cc",
+			"settings":
+			{
+				"buffer_size": 1684,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "LaserRobot.cc",
+			"settings":
+			{
+				"buffer_size": 2247,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "UdpSession.h",
+			"settings":
+			{
+				"buffer_size": 1597,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -309,22 +421,34 @@
 	},
 	"file_history":
 	[
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/hw1.mak",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/makefile",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.cc",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/bind/mem_fn_template.hpp",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Follower.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/impl/reactive_socket_service_base.ipp",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/function/function_template.hpp",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Follower.h",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Leader.cc",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPoint.cc",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPoint.h",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.h",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/bind/bind.hpp",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.cc",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.cc",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Leader.h",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Follower.h",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPoint.h",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/basic_datagram_socket.hpp",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/LaserRobot.h",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpSession.cc",
+		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/datagram_socket_service.hpp",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/reactive_socket_service.hpp",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/impl/task_io_service.ipp",
+		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/impl/io_service.ipp",
+		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/Default.sublime-keymap",
+		"/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeGDB.sublime-settings",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/hw1.mak",
+		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/makefile",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/mytest.cc",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.h",
-		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Communicate.cc",
 		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/noncopyable.hpp",
 		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/checked_delete.hpp",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/TimeRecorder.h",
@@ -334,15 +458,11 @@
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpClient.h",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/UdpClient.cc",
 		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/ip/impl/address.ipp",
-		"/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/basic_datagram_socket.hpp",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/README.txt",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/CommPara.cc",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/Udp",
 		"/media/sf_DistributedIntelligenceInRobotics/hw/MyRobot/README 1.txt",
-		"/home/ubuntu/.config/sublime-text-3/Packages/User/SublimeGDB.sublime-settings",
-		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
 		"/home/ubuntu/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
-		"/home/ubuntu/.config/sublime-text-3/Packages/SublimeGDB/Default.sublime-keymap",
 		"/home/ubuntu/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/MyRobot.sublime-project",
 		"/C/Users/Ding/SkyDrive/Program/CalPolyPomona/DistributedIntelligenceInRobotics/hw/MyRobot/Follower.cc",
@@ -428,19 +548,11 @@
 		"/C/Users/Ding/SkyDrive/Program/ImageProcess/ImageProcessing/Operation Instruction.txt",
 		"/C/tools/openssl-1.0.1e/INSTALL.W32",
 		"/C/tools/openssl/Makefile",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/GrayLevel.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/HistogramMatch.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/HistogramEQ.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/Replication.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/nearest_neighbor.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/bilinear_interpolation.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/PowerScale.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/LogScale.cpp",
-		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/HistogramLocal.cpp"
+		"/C/ProgramMaterial/ImageProcess/ImageProcessing/ImageProcessing/GrayLevel.cpp"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -455,6 +567,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"REUSE",
+			"SO_REUSEADDR",
+			"f5",
 			"unsigned char",
 			"bind",
 			"locationMsgLen",
@@ -514,32 +629,135 @@
 			[
 				{
 					"buffer": 0,
-					"file": "LaserRobot.cc",
+					"file": "UdpSession.cc",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2245,
+						"buffer_size": 3240,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1518,
+								1518
 							]
 						],
 						"settings":
 						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
 							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 720.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -548,15 +766,149 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 969,
+						"buffer_size": 1040,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								727,
-								727
+								522,
+								522
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/task_io_service_operation.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1200,
+								1200
 							]
 						],
 						"settings":
@@ -566,85 +918,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 348.0,
+						"translation.y": 316.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Leader.cc",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2011,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								358,
-								358
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 78.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "LaserRobot.h",
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/impl/epoll_reactor.ipp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 680,
+						"buffer_size": 18059,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								17854,
+								17854
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 9541.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "Communicate.cc",
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/bind/bind.hpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4849,
+						"buffer_size": 57437,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								228,
-								228
+								11085,
+								11085
 							]
 						],
 						"settings":
@@ -654,10 +978,437 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+						"translation.y": 5634.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/bind/bind_template.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14071,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2927,
+								2927
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1284.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/function/function_template.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 39355,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								26772,
+								26772
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 11251.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/bind_handler.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13485,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3171,
+								3171
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1666.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/handler_invoke_hook.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2750,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2405,
+								2405
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 781.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/handler_invoke_helpers.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1748,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1272,
+								1272
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 316.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/asio/detail/reactive_socket_recvfrom_op.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4554,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4346,
+								4346
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1576.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Follower.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1288,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1169,
+								1169
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 536.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0/boost/bind/mem_fn_template.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26529,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8354,
+								8354
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5641.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "CommPoint.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1684,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								661,
+								661
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 241.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "LaserRobot.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2247,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "UdpSession.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1597,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								647,
+								647
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
 					"type": "text"
 				}
 			]
@@ -696,7 +1447,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 241.0
+		"height": 238.0
 	},
 	"output.find_results":
 	{

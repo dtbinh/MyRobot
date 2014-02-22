@@ -1,5 +1,4 @@
 #include "Leader.h"
-#include "TimeRecorder.h"
 
 using namespace std;
 
@@ -21,11 +20,11 @@ Leader::~Leader()
 	
 }
 
-int Leader::handle_read(const unsigned char * buf, size_t bytes_transferred)
+void Leader::handle_read(unsigned char * buf, const boost::system::error_code& error, size_t bytes_transferred)
 {
-	if(bytes_transferred > 0)
+	if(!error && bytes_transferred > 0)
 	{
-		cout <<"Recive msg: "<< buf << endl;	
+		cout <<"Recive msg: "<< string(buf, buf+bytes_transferred) << endl;	
 
 		countMsg_ += bytes_transferred / locationMsgLen;
 				
@@ -36,11 +35,9 @@ int Leader::handle_read(const unsigned char * buf, size_t bytes_transferred)
 		}
 		else
 		{
-			ListenFromAll(boost::bind(&Leader::handle_read, this, _1, _2));	
+			ListenFromAll(boost::bind(&Leader::handle_read, this, _1, _2, _3));	
 		}
 	}
-	
-	return bytes_transferred;
 }
 
 void Leader::handle_timerCount(const boost::system::error_code& error, bool bFirstCount)
@@ -53,7 +50,7 @@ void Leader::handle_timerCount(const boost::system::error_code& error, bool bFir
     	{
     		cout << duration << " seconds passed. Current's robot locations are:" << endl;
     		Stop();
-    		ListenFromAll(boost::bind(&Leader::handle_read, this, _1, _2));	
+    		ListenFromAll(boost::bind(&Leader::handle_read, this, _1, _2, _3));	
     	}
     	else
     	{
@@ -76,7 +73,6 @@ void Leader::Start(bool bFirstTime)
 	}
 
 	TalkToAll(msg, defautBroadCastPort);
-	cout<<"Send msg: " << msg << endl;
 
 	cout<<"All robots "<<msg<<" safewalking."<<endl;
 

@@ -4,7 +4,6 @@
 #include <boost/scoped_ptr.hpp>
 #include "UdpSession.h"
 
-const std::string defaultBroadCastAddr = "10.0.2.255";
 const std::string startMsg = "start";
 const std::string stopMsg = "stop";
 const std::string resumeMsg = "resume";
@@ -19,6 +18,10 @@ public:
 
 	int ListenFromAll(typeHandleRead read_callback = 0);
 	int TalkToAll(std::string msg, int broadcastPort, typeHandleWrite write_callback = 0, std::string broadcastIP = defaultBroadCastAddr);
+
+private:	
+	void handle_read(unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred);
+	void handle_write(const boost::system::error_code& error,size_t bytes_transferred);
 
 protected:
 	unsigned char recv_data_[max_msg_len];

@@ -11,9 +11,9 @@ public:
 	virtual void Run();
 
 private:
-	int handle_read(const unsigned char * buf, size_t bytes_transferred);
+	void handle_read(unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred);
 	void SendLocation();
-	bool ParseMsg(const char * msg);
+	bool ParseMsg(const unsigned char * msg, size_t length);
 
 private:
 	int myPort_;

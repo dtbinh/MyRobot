@@ -94,7 +94,7 @@ void LaserRobot::handle_timerWalk(const boost::system::error_code& error)
 
 void LaserRobot::Resume()
 {
-  LaserAvoidance();
+    LaserAvoidance();
     timerWalk_.expires_from_now(boost::posix_time::millisec(200));
     timerWalk_.async_wait(boost::bind(&LaserRobot::handle_timerWalk, this, boost::asio::placeholders::error));
 }

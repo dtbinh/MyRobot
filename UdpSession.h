@@ -4,10 +4,13 @@
 #include <boost/asio.hpp>
 #include <boost/function.hpp>
 
-typedef boost::function<int (const unsigned char * buf, size_t bytes_transferred)> typeHandleRead;
-typedef boost::function<int (size_t bytes_transferred)> typeHandleWrite;
+//typedef boost::function<int (const unsigned char * buf, size_t bytes_transferred)> typeHandleRead;
+//typedef boost::function<int (size_t bytes_transferred)> typeHandleWrite;
+typedef boost::function<void (unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred)> typeHandleRead;
+typedef boost::function<void (const boost::system::error_code& error,size_t bytes_transferred)> typeHandleWrite;
 
 const int max_msg_len = 256;
+const std::string defaultBroadCastAddr = "10.0.2.255";
 
 using boost::asio::ip::udp;
 
@@ -17,21 +20,17 @@ public:
 	UdpSession(boost::asio::io_service & io_service, int port, std::string ip);
 	~UdpSession();
 
-	void UninitConnect(void);
 	int OpenConnect(void);
 	int CloseConnect(void);
 	
 	udp::endpoint GenerateRemote(int remotePort, std::string remoteIP);
-	udp::endpoint GenerateBroadcast(int broadcastPort, std::string broadcastIP);
 	
-	int WriteToRemote(udp::endpoint remote_endpoint, const unsigned char * buf, size_t bytes_transferred, typeHandleWrite write_callback = 0 );
+	int WriteToRemote(udp::endpoint remote_endpoint, const unsigned char * buf, size_t bytes_transferred, typeHandleWrite write_callback);
 	int ReadFromConnect( unsigned char * buf, typeHandleRead read_callback, size_t bytes_transferred = 0);
 	
 	bool getConnectAlive(void);
 
-private:
-	int StartBind(int localPort, std::string localIP);
-	
+private:	
 	void handle_read(unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred);
 	void handle_write(const boost::system::error_code& error,size_t bytes_transferred);
 

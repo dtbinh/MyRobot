@@ -4,14 +4,11 @@ using namespace std;
 
 const int defaultListenPort = 9001;
 const int defautBroadCastPort = 9000;
-const int listenChannel = 0;
-const int broadcastChannel = 0; 
 
 Follower::Follower(boost::asio::io_service & io_service, string host, int player_port)
-:myPort_(player_port),
-LaserRobot(io_service, defaultListenPort, host, player_port)
+:LaserRobot(io_service, defaultListenPort, host, player_port)
 {
-
+	myPort_ = player_port;
 }
 
 Follower::~Follower()
@@ -28,15 +25,12 @@ void Follower::SendLocation()
 	msg << myPort_ << "(" << x_pos << ", " << y_pos << ")" << endl;
 
 	TalkToAll(msg.str(), defautBroadCastPort);
-
-	cout<<"Send msg: " << msg.str() << endl;
 }
 
-bool Follower::ParseMsg(const char * msg)
+bool Follower::ParseMsg(const unsigned char * msg, size_t length)
 {
-	cout <<"Receive msg: "<< msg << endl;
-
-	if(strcmp(msg, stopMsg.c_str()) == 0)
+	string strMsg(msg, msg + length);
+	if(strMsg.compare(stopMsg) == 0)
 	{
 		SendLocation();
 		return false;
@@ -45,13 +39,12 @@ bool Follower::ParseMsg(const char * msg)
 	return true;
 }
 
-int Follower::handle_read(const unsigned char * buf, size_t bytes_transferred)
+void Follower::handle_read(unsigned char * buf, const boost::system::error_code& error, size_t bytes_transferred)
 {
-	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2));
-
-	if(bytes_transferred > 0)
-	{	
-		if(ParseMsg((const char *)buf))
+	if(!error && bytes_transferred > 0)
+	{
+		cout <<"Receive msg: "<< string(buf, buf + bytes_transferred) << endl;
+		if(ParseMsg(buf, bytes_transferred))
 		{
 			cout << "follower is running..." << endl;
 			Walk();
@@ -61,11 +54,13 @@ int Follower::handle_read(const unsigned char * buf, size_t bytes_transferred)
 			Stop();
 		}
 	}
-	
-	return bytes_transferred;
+
+	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2, _3));
 }
 
 void Follower::Run()
 {
-	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2));
+  	SendLocation();
+  	Walk();
+  	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2, _3));
 }
