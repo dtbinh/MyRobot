@@ -19,7 +19,7 @@ OUTFILE=./$(OUTDIR)/robot
 CFG_INC=-I$(player_inc) -I$(boost_inc) 
 CFG_LIB=$(player_lib) $(boost_lib) 
 CFG_OBJ=
-COMMON_OBJ=$(OUTDIR)/test.o $(OUTDIR)/UdpSession.o $(OUTDIR)/CommPoint.o
+COMMON_OBJ=$(OUTDIR)/MyRobot.o $(OUTDIR)/UdpSession.o $(OUTDIR)/CommPoint.o $(OUTDIR)/LaserRobot.o $(OUTDIR)/Leader.o $(OUTDIR)/Follower.o
 
 OBJ=$(COMMON_OBJ) $(CFG_OBJ)
 ALL_OBJ=$(COMMON_OBJ) $(CFG_LIB) 

@@ -22,7 +22,7 @@ void Follower::SendLocation()
 	int y_pos = GetYPos();
 
 	ostringstream msg;
-	msg << myPort_ << "(" << x_pos << ", " << y_pos << ")" << endl;
+	msg << myPort_ << "(" << x_pos << ", " << y_pos << ")";
 
 	TalkToAll(msg.str(), defautBroadCastPort);
 }
@@ -41,7 +41,7 @@ bool Follower::ParseMsg(const unsigned char * msg, size_t length)
 
 void Follower::handle_read(unsigned char * buf, const boost::system::error_code& error, size_t bytes_transferred)
 {
-	if(!error && bytes_transferred > 0)
+	if(!error && bytes_transferred < 0)
 	{
 		cout <<"Receive msg: "<< string(buf, buf + bytes_transferred) << endl;
 		if(ParseMsg(buf, bytes_transferred))
@@ -55,12 +55,12 @@ void Follower::handle_read(unsigned char * buf, const boost::system::error_code&
 		}
 	}
 
-	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2, _3));
+	ListenFromAll();
 }
 
 void Follower::Run()
 {
+   	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2, _3));
+  	TalkToAll("Test Send", defautBroadCastPort);
   	SendLocation();
-  	Walk();
-  	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2, _3));
 }

@@ -50,7 +50,17 @@ int main(int argc, char *argv[])
   }
   catch (PlayerCc::PlayerError & e)
   {
-    std::cerr << e << std::endl;
+    cerr << "main catch player exception: " << e << endl;   
+    return -1;
+  }
+  catch (exception & e)
+  {
+    cerr << "main catch std exception: " << e.what() << endl;  
+    return -1;
+  }
+  catch (...)
+  {
+    cerr<< "main catch unknown exception"<<endl;
     return -1;
   }
 }

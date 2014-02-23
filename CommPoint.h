@@ -8,7 +8,7 @@ const std::string startMsg = "start";
 const std::string stopMsg = "stop";
 const std::string resumeMsg = "resume";
 
-const int locationMsgLen = 11;
+const int locationMsgLen = 10;
 
 class CommPoint
 {
