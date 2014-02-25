@@ -3,7 +3,7 @@
 using namespace std;
 
 Dispersor::Dispersor(boost::asio::io_service & io_service, string host, int player_port)
-:LaserRobot(io_service, host, player_port)
+:Centralization(io_service, host, player_port)
 {
 
 }
@@ -13,7 +13,34 @@ Dispersor::~Dispersor()
 
 }
 
-void Dispersor::Run()
+void Dispersor::Identify()
 {
+	cout << "Dispersor is running" << endl;
+}
 
+bool Dispersor::CompareToInterRobot(CoorPtr other)
+{
+	Coordinate location(GetXPos(), GetYPos());
+
+	return location.getDistance(other) < getInterDistance();
+}
+
+bool Dispersor::ComapreToCenter(CoorPtr center)
+{
+	Coordinate location(GetXPos(), GetYPos());
+
+	return location.getDistance(center) < getDagorithm();
+}
+
+void Dispersor::Moving(CoorPtr source)
+{
+	double diffY = GetYPos() - source->getY();
+	double diffX = GetXPos() - source->getX();
+
+	double desired_yaw = atan2(diffY, diffX);
+	double current_yaw = GetYaw();
+
+	double diff_yaw = desired_yaw - current_yaw;
+
+	SetSpeed(forwardSpeed, diff_yaw);
 }

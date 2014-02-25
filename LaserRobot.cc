@@ -51,6 +51,11 @@ int LaserRobot::StopMoving()
   return 0;
 }
 
+void LaserRobot::SetSpeed(double forwardSpeed, double turnSpeed)
+{
+  pp_->SetSpeed(forwardSpeed, turnSpeed);
+}
+
 void LaserRobot::LaserAvoidance()
 {
   double newspeed = 0;

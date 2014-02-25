@@ -10,10 +10,11 @@ const int defautBroadCastPort = 9001;
 using namespace std;
 using namespace boost;
 
-Centralization::Centralization(boost::asio::io_service & io_service, int player_port)
+Centralization::Centralization(boost::asio::io_service & io_service, std::string host, int player_port)
 :CommPoint(io_service, defaultListenPort),
-myPort_(player_port),
-location_(0,0)
+LaserRobot(io_service, host, player_port),
+timerWalk_(io_service),
+myPort_(player_port)
 {
 
 }
@@ -21,24 +22,6 @@ location_(0,0)
 Centralization::~Centralization()
 {
 
-}
-
-bool Centralization::CheckCenter(queue<CoorPtr> others, CoorPtr center, function<bool(double dis)> compare)
-{
-	center = location_.CalCenter(others);
-
-	while(!others.empty())
-	{
-		double distance = location_.getDistance(others.front());
-		others.pop();
-
-		if (compare(distance))
-		{
-			return true;
-		}
-	}
-
-	return false;
 }
 
 queue<CoorPtr> Centralization::FilterNeighbor(int d_sense)
@@ -50,9 +33,11 @@ queue<CoorPtr> Centralization::FilterNeighbor(unordered_map<short, CoorPtr> & ot
 {
 	queue<CoorPtr> ret;
 
+	Coordinate location(GetXPos(), GetYPos());
+
 	for(unordered_map<short, CoorPtr>::iterator it = others.begin(); it != others.end(); it++)
 	{
-		if (location_.getDistance(it->second) <= d_sense)
+		if (location.getDistance(it->second) <= d_sense)
 		{
 			ret.push(it->second);
 		}
@@ -63,11 +48,8 @@ queue<CoorPtr> Centralization::FilterNeighbor(unordered_map<short, CoorPtr> & ot
 
 void Centralization::BroadcastLocation(double x_pos, double y_pos)
 {
-	location_.setX(x_pos);
-	location_.setY(y_pos);
-
 	ostringstream msg;
-	msg << myPort_ <<":"<< location_.getX() <<","<< location_.getY();
+	msg << myPort_ <<":"<< x_pos <<","<< y_pos;
 
 	TalkToAll(msg.str(), defautBroadCastPort);
 }
@@ -127,4 +109,90 @@ void Centralization::handle_read(unsigned char * buf, const boost::system::error
 	}
 
 	ListenFromAll(boost::bind(&Centralization::handle_read, this, _1, _2, _3));
+}
+
+int Centralization::getDsense()
+{
+	return d_sense_;
+}
+
+void Centralization::setDsense(int val)
+{
+	d_sense_ = val;
+}
+
+int Centralization::getDagorithm()
+{
+	return d_agorithm_;
+}
+
+void Centralization::setDagorithm(int val)
+{
+	d_agorithm_ = val;
+}
+
+void Centralization::setInterDistance(int val)
+{
+	inter_distance_ = val;
+}
+
+int Centralization::getInterDistance()
+{
+	return inter_distance_;
+}
+
+bool Centralization::CheckCenter(queue<CoorPtr> others, CoorPtr center)
+{
+	Coordinate location(GetXPos(), GetYPos());
+	center = location.CalCenter(others);
+
+	while(!others.empty())
+	{
+		CoorPtr other = others.front();
+		others.pop();
+
+		if (CompareToInterRobot(other))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+void Centralization::Resume()
+{
+	LaserAvoidance();
+	BroadcastLocation(GetXPos(), GetYPos());
+	
+	CoorPtr center;
+	if(CheckCenter(FilterNeighbor(getDsense()), center) 
+		&& ComapreToCenter(center))
+	{
+		Moving(center);
+	}
+	else
+	{
+		Stop();
+	}
+
+	timerWalk_.expires_from_now(boost::posix_time::millisec(200));
+    timerWalk_.async_wait(boost::bind(&Centralization::handle_timerWalk, this, boost::asio::placeholders::error));
+}
+
+void Centralization::handle_timerWalk(const boost::system::error_code& error)
+{
+	if (!error)
+ 	{
+ 		Resume();
+ 	}
+}
+
+void Centralization::Run()
+{
+	Identify();
+	
+	RegisterListening();
+
+	Resume();
 }

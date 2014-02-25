@@ -19,8 +19,11 @@ protected:
 	double GetXPos();
 	double GetYPos();
 	double GetYaw();
+	void SetSpeed(double forwardSpeed, double turnSpeed);
+	
 	void Walk();
 	void Stop();
+	
 	void LaserAvoidance();
 	
 private:

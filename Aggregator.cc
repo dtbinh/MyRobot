@@ -3,12 +3,8 @@
 
 using namespace std;
 
-const double forwardSpeed = 2;
-
 Aggregator::Aggregator(boost::asio::io_service & io_service, string host, int player_port)
-:LaserRobot(io_service, host, player_port),
-Centralization(io_service, player_port),
-timerWalk_(io_service)
+:Centralization(io_service, host, player_port)
 {
 
 }
@@ -18,82 +14,34 @@ Aggregator::~Aggregator()
 
 }
 
-int Aggregator::getDsense()
+void Aggregator::Identify()
 {
-	return d_sense_;
+	cout << "Aggregator is running" << endl;
 }
 
-void Aggregator::setDsense(int val)
+bool Aggregator::CompareToInterRobot(CoorPtr other)
 {
-	d_sense_ = val;
+	Coordinate location(GetXPos(), GetYPos());
+
+	return location.getDistance(other) > getInterDistance();
 }
 
-int Aggregator::getDaggregate()
+bool Aggregator::ComapreToCenter(CoorPtr center)
 {
-	return d_aggregate_;
+	Coordinate location(GetXPos(), GetYPos());
+
+	return location.getDistance(center) > getDagorithm();
 }
 
-void Aggregator::setDaggregate(int val)
+void Aggregator::Moving(CoorPtr destination)
 {
-	d_aggregate_ = val;
-}
+	double diffY = destination->getY() - GetYPos();
+	double diffX = destination->getX() - GetXPos();
 
-void Aggregator::setInterDistance(int val)
-{
-	inter_distance_ = val;
-}
+	double desired_yaw = atan2(diffY, diffX);
+	double current_yaw = GetYaw();	
 
-int Aggregator::getInterDistance()
-{
-	return inter_distance_;
-}
+	double diff_yaw = desired_yaw - current_yaw;
 
-bool Aggregator::compare(double distance)
-{
-	return distance > getInterDistance();
-}
-
-void Aggregator::MoveTowards(CoorPtr destination)
-{
-	double current_yaw = GetYaw();
-	
-	double diffY = destination->getY() - location_.getY();
-	double diffX = destination->getX() - location_.getX();
-
-	double desired_yaw = PlayerCc::dtor(atan(diffY / diffX));
-}
-
-void Aggregator::Resume()
-{
-	LaserAvoidance();
-	BroadcastLocation(GetXPos(), GetYPos());
-	
-	CoorPtr center;
-	if(CheckCenter(FilterNeighbor(getDsense()), center, boost::bind(&Aggregator::compare, this, _1)) 
-		&& location_.getDistance(center) >= getDaggregate())
-	{
-		MoveTowards(center);
-	}
-	else
-	{
-		Stop();
-	}
-
-	timerWalk_.expires_from_now(boost::posix_time::millisec(200));
-    timerWalk_.async_wait(boost::bind(&Aggregator::handle_timerWalk, this, boost::asio::placeholders::error));
-}
-
-void Aggregator::handle_timerWalk(const boost::system::error_code& error)
-{
-	if (!error)
- 	{
- 		Resume();
- 	}
-}
-
-void Aggregator::Run()
-{
-	RegisterListening();
-
-	Resume();
+	SetSpeed(forwardSpeed, diff_yaw);
 }
