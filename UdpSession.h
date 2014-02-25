@@ -4,13 +4,10 @@
 #include <boost/asio.hpp>
 #include <boost/function.hpp>
 
-//typedef boost::function<int (const unsigned char * buf, size_t bytes_transferred)> typeHandleRead;
-//typedef boost::function<int (size_t bytes_transferred)> typeHandleWrite;
 typedef boost::function<void (unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred)> typeHandleRead;
 typedef boost::function<void (const boost::system::error_code& error,size_t bytes_transferred)> typeHandleWrite;
 
 const int max_msg_len = 256;
-const std::string defaultBroadCastAddr = "10.0.2.255";
 
 using boost::asio::ip::udp;
 

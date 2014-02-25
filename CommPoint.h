@@ -8,12 +8,14 @@ const std::string startMsg = "start";
 const std::string stopMsg = "stop";
 const std::string resumeMsg = "resume";
 
+const std::string defaultBroadCastAddr = "10.0.2.255";
+
 const int locationMsgLen = 10;
 
 class CommPoint
 {
 public:
-	CommPoint(boost::asio::io_service & io_service, int port, std::string ip);
+	CommPoint(boost::asio::io_service & io_service, int listen_port);
 	virtual ~CommPoint(void);
 
 	int ListenFromAll(typeHandleRead read_callback = 0);

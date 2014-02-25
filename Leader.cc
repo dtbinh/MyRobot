@@ -9,7 +9,8 @@ const int duration = 20;
 const int follower_num = 5;
 
 Leader::Leader(boost::asio::io_service & io_service, string host, int player_port)
-:LaserRobot(io_service, defaultListenPort, host, player_port),
+:LaserRobot(io_service, host, player_port),
+CommPoint(io_service, defaultListenPort),
 timerCount_(io_service)
 {
 	countMsg_ = 0;

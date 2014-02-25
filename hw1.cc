@@ -28,22 +28,24 @@ int main(int argc, char *argv[])
 
     boost::asio::io_service io_service_;
     boost::asio::io_service::work work_(io_service_);
-    
+
+    boost::shared_ptr<Robot> robot;
     if (iPort == defaultPort)
     {
       cout << "Create a leader" << endl;
-      int type = robotLeader;
+      robot.reset(RobotFactory::CreateRobot(robotLeader, io_service_, strHost, iPort));
     }
     else
     {
       cout << "Create a follower" << endl;
-      int type = robotFollower;
+      robot.reset(RobotFactory::CreateRobot(robotFollower, io_service_, strHost, iPort));
     }
-    boost::shared_ptr<Robot> robot(RobotFactory::CreateRobot(robotLeader, io_service_, strHost, iPort));
+
     robot->Run();
     io_service_.run();
     
-    cout << "Robot Exit" << endl;    
+    cout << "Robot Exit" << endl;
+    
   }
   catch (PlayerCc::PlayerError & e)
   {

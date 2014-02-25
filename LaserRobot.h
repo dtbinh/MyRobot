@@ -2,30 +2,32 @@
 
 #include <libplayerc++/playerc++.h>
 #include <boost/smart_ptr/scoped_ptr.hpp>
-#include "CommPoint.h"
+#include <boost/asio.hpp>
+#include "Robot.h"
 
 using namespace PlayerCc;
 
-class LaserRobot :  public CommPoint
+class LaserRobot : public Robot
 {
 public:
-	LaserRobot(boost::asio::io_service & io_service, int comm_port, std::string host, int player_port);
+	LaserRobot(boost::asio::io_service & io_service, std::string host, int player_port);
 	~LaserRobot();
 
 	virtual void Run();
 
+protected:
+	double GetXPos();
+	double GetYPos();
+	double GetYaw();
+	void Walk();
+	void Stop();
+	void LaserAvoidance();
+	
 private:
 	int StopMoving();
 	int StartMoving();
 	void Resume();
-	int LaserAvoidance();
 	void handle_timerWalk(const boost::system::error_code& error);
-
-protected:
-	double GetXPos();
-	double GetYPos();
-	void Walk();
-	void Stop();
 
 private:
 	PlayerClient * robot_;

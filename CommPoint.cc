@@ -5,8 +5,8 @@
 using namespace boost::asio;
 using namespace std;
 
-CommPoint::CommPoint(io_service & io_service, int port, std::string ip)
-:comm_channel_(new UdpSession(io_service, port, ip))
+CommPoint::CommPoint(io_service & io_service, int listen_port)
+:comm_channel_(new UdpSession(io_service, listen_port, defaultBroadCastAddr))
 {
 	
 }

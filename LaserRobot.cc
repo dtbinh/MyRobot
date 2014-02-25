@@ -5,13 +5,14 @@ const int defaultLaserProxyPort = 0;
 
 using namespace std;
 
-LaserRobot::LaserRobot(boost::asio::io_service & io_service, int comm_port, string host, int player_port)
-:CommPoint(io_service, comm_port, host),
-timerWalk_(io_service)
+LaserRobot::LaserRobot(boost::asio::io_service & io_service, string host, int player_port)
+:timerWalk_(io_service)
 {
   robot_ = new PlayerClient(host, player_port);
 	pp_ = new Position2dProxy(robot_, defaultPosition2dProxyPort);
 	lp_ = new LaserProxy(robot_, defaultLaserProxyPort);
+
+  pp_->RequestGeom();
 }
 
 LaserRobot::~LaserRobot()
@@ -33,34 +34,38 @@ double LaserRobot::GetYPos()
   return pp_->GetYPos();
 }
 
+double LaserRobot::GetYaw()
+{
+  return pp_->GetYaw();
+}
 
 int LaserRobot::StartMoving()
 {
-  pp_->SetSpeed(5.0, 5.0, 5.0);
+  pp_->SetSpeed(1.0, 0.0);
 }
 
 int LaserRobot::StopMoving()
 {
-  pp_->SetSpeed(0.0, 0.0, 0.0);
+  pp_->SetSpeed(0.0, 0.0);
 
   return 0;
 }
 
-int LaserRobot::LaserAvoidance()
+void LaserRobot::LaserAvoidance()
 {
   double newspeed = 0;
   double newturnrate = 0;
 
-      // this blocks until new data comes; 10Hz by default
+  // this blocks until new data comes; 10Hz by default
   robot_->Read();
 
   double minR = lp_->GetMinRight();
   double minL = lp_->GetMinLeft();
 
-      // laser avoid (stolen from esben's java example)
-      //std::cout << "minR: " << minR
-      //          << "minL: " << minL
-      //          << std::endl;
+  // laser avoid (stolen from esben's java example)
+  //std::cout << "minR: " << minR
+  //          << "minL: " << minL
+  //          << std::endl;
 
   double l = (1e5*minR)/500-100;
   double r = (1e5*minL)/500-100;
