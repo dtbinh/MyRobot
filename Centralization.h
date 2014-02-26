@@ -34,7 +34,7 @@ private:
 
 	std::queue<CoorPtr> FilterNeighbor(int d_sense);
 	std::queue<CoorPtr> FilterNeighbor(boost::unordered_map<short, CoorPtr> & other, int d_sense);
-	bool CheckCenter(std::queue<CoorPtr> others, CoorPtr center);
+	bool CheckCenter(std::queue<CoorPtr> others, CoorPtr & center);
 
 	void handle_read(unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred);
 	void handle_timerWalk(const boost::system::error_code& error);

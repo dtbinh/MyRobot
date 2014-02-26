@@ -141,7 +141,7 @@ int Centralization::getInterDistance()
 	return inter_distance_;
 }
 
-bool Centralization::CheckCenter(queue<CoorPtr> others, CoorPtr center)
+bool Centralization::CheckCenter(queue<CoorPtr> others, CoorPtr & center)
 {
 	Coordinate location(GetXPos(), GetYPos());
 	center = location.CalCenter(others);
@@ -166,8 +166,8 @@ void Centralization::Resume()
 	BroadcastLocation(GetXPos(), GetYPos());
 	
 	CoorPtr center;
-	if(CheckCenter(FilterNeighbor(getDsense()), center) 
-		&& ComapreToCenter(center))
+	bool ret = CheckCenter(FilterNeighbor(getDsense()), center);
+	if(ret && center && ComapreToCenter(center))
 	{
 		Moving(center);
 	}

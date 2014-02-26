@@ -1,12 +1,11 @@
 #pragma once
 #include <boost/asio.hpp>
+#include "Robot.h"
 
 const int robotLeader = 1;
 const int robotFollower = 2;
 const int robotAggregator = 3;
 const int robotDispersor = 4;
-
-class Robot;
 
 class RobotFactory
 {
