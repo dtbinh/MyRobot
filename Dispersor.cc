@@ -5,7 +5,7 @@ using namespace std;
 Dispersor::Dispersor(boost::asio::io_service & io_service, string host, int player_port)
 :Centralization(io_service, host, player_port)
 {
-
+	cout << "Create a Dispersor" << endl;
 }
 
 Dispersor::~Dispersor()
@@ -23,13 +23,6 @@ bool Dispersor::CompareToInterRobot(CoorPtr other)
 	Coordinate location(GetXPos(), GetYPos());
 
 	return location.getDistance(other) < getInterDistance();
-}
-
-bool Dispersor::ComapreToCenter(CoorPtr center)
-{
-	Coordinate location(GetXPos(), GetYPos());
-
-	return location.getDistance(center) < getDagorithm();
 }
 
 void Dispersor::Moving(CoorPtr source)

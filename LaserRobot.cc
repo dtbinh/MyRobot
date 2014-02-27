@@ -68,9 +68,9 @@ void LaserRobot::LaserAvoidance()
   double minL = lp_->GetMinLeft();
 
   // laser avoid (stolen from esben's java example)
-  //std::cout << "minR: " << minR
-  //          << "minL: " << minL
-  //          << std::endl;
+  std::cout << "minR: " << minR
+            << "minL: " << minL
+            << std::endl;
 
   double l = (1e5*minR)/500-100;
   double r = (1e5*minL)/500-100;
@@ -86,11 +86,11 @@ void LaserRobot::LaserAvoidance()
   newturnrate = limit(newturnrate, -40.0, 40.0);
   newturnrate = dtor(newturnrate);
 
-      //std::cout << "speed: " << newspeed
-      //          << "turn: " << newturnrate
-      //          << std::endl;
+  std::cout << "speed: " << newspeed
+            << " turn: " << newturnrate
+            << std::endl;
 
-      // write commands to robot_
+  // write commands to robot
   pp_->SetSpeed(newspeed, newturnrate);
 }
 

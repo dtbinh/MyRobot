@@ -8,6 +8,7 @@ const std::string startMsg = "start";
 const std::string stopMsg = "stop";
 const std::string resumeMsg = "resume";
 
+//const std::string defaultBroadCastAddr = "192.168.134.255";
 const std::string defaultBroadCastAddr = "10.0.2.255";
 
 const int locationMsgLen = 10;

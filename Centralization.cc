@@ -5,7 +5,7 @@
 #include <boost/make_shared.hpp>
 
 const int defaultListenPort = 9000;
-const int defautBroadCastPort = 9001;
+const int defautBroadCastPort = 9000;
 
 using namespace std;
 using namespace boost;
@@ -103,7 +103,7 @@ void Centralization::handle_read(unsigned char * buf, const boost::system::error
 	if(!error && bytes_transferred > 0)
 	{
 		string msg(buf, buf + bytes_transferred);
-		cout <<"Receive msg: "<< msg << endl;
+		cout <<"Centralization Receive msg: "<< msg << endl;
 
 		ParseMessage(msg);
 	}
@@ -121,16 +121,6 @@ void Centralization::setDsense(int val)
 	d_sense_ = val;
 }
 
-int Centralization::getDagorithm()
-{
-	return d_agorithm_;
-}
-
-void Centralization::setDagorithm(int val)
-{
-	d_agorithm_ = val;
-}
-
 void Centralization::setInterDistance(int val)
 {
 	inter_distance_ = val;
@@ -141,11 +131,14 @@ int Centralization::getInterDistance()
 	return inter_distance_;
 }
 
-bool Centralization::CheckCenter(queue<CoorPtr> others, CoorPtr & center)
+CoorPtr Centralization::CalcCenter(queue<CoorPtr> others)
 {
 	Coordinate location(GetXPos(), GetYPos());
-	center = location.CalCenter(others);
+	return location.CalCenter(others);
+}
 
+bool Centralization::CheckNeighbor(queue<CoorPtr> others)
+{
 	while(!others.empty())
 	{
 		CoorPtr other = others.front();
@@ -162,14 +155,13 @@ bool Centralization::CheckCenter(queue<CoorPtr> others, CoorPtr & center)
 
 void Centralization::Resume()
 {
-	LaserAvoidance();
+	//LaserAvoidance();
 	BroadcastLocation(GetXPos(), GetYPos());
 	
-	CoorPtr center;
-	bool ret = CheckCenter(FilterNeighbor(getDsense()), center);
-	if(ret && center && ComapreToCenter(center))
+	queue<CoorPtr> neighbor = FilterNeighbor(getDsense());
+	if(CheckNeighbor(neighbor))
 	{
-		Moving(center);
+		Moving(CalcCenter(neighbor));
 	}
 	else
 	{

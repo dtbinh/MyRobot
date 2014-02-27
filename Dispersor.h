@@ -8,7 +8,6 @@ public:
 	~Dispersor();
 
 	virtual bool CompareToInterRobot(CoorPtr other);
-	virtual bool ComapreToCenter(CoorPtr center);
 	virtual void Moving(CoorPtr source);
 	virtual void Identify();
 };

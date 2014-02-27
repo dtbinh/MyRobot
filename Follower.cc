@@ -9,6 +9,7 @@ Follower::Follower(boost::asio::io_service & io_service, string host, int player
 :LaserRobot(io_service, host, player_port),
 CommPoint(io_service, defaultListenPort)
 {
+	cout << "Create a Follower" << endl;
 	myPort_ = player_port;
 }
 
@@ -61,5 +62,6 @@ void Follower::handle_read(unsigned char * buf, const boost::system::error_code&
 
 void Follower::Run()
 {
+	SendLocation();
 	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2, _3));
 }

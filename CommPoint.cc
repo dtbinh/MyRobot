@@ -61,7 +61,7 @@ void CommPoint::handle_read(unsigned char * buf, const boost::system::error_code
 {
 	if(!error)
 	{
-		cout <<"Recv Msg: "<< string(buf, buf + bytes_transferred) << endl;
+		cout <<"CommPoint Recv Msg: "<< string(buf, buf + bytes_transferred) << endl;
 	}
 }
 

@@ -8,7 +8,6 @@ public:
 	~Aggregator();
 
 	virtual bool CompareToInterRobot(CoorPtr other);
-	virtual bool ComapreToCenter(CoorPtr center);
 	virtual void Moving(CoorPtr destination);
 	virtual void Identify();
 

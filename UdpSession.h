@@ -35,6 +35,8 @@ private:
 	boost::asio::io_service & io_service_;
 	boost::asio::ip::udp::udp::socket socket_;
 
-	typeHandleRead after_read;
-	typeHandleWrite after_write;
+	unsigned char recv_data_[max_msg_len];
+
+	//typeHandleRead after_read;
+	//typeHandleWrite after_write;
 };

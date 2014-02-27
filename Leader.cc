@@ -13,6 +13,7 @@ Leader::Leader(boost::asio::io_service & io_service, string host, int player_por
 CommPoint(io_service, defaultListenPort),
 timerCount_(io_service)
 {
+	cout << "Create a Leader" << endl;
 	countMsg_ = 0;
 }
 

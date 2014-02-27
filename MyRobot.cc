@@ -50,7 +50,7 @@ int GetOneInput(int & val, string name)
 	return val;
 }
 
-bool GetInput(int & player_port, string & run_type, int & d_sense, int & distance, int & d_agorithm )
+bool GetInput(int & player_port, string & run_type, int & d_sense, int & distance )
 {
 	using namespace boost;
 
@@ -66,23 +66,9 @@ bool GetInput(int & player_port, string & run_type, int & d_sense, int & distanc
 	if (distance >= d_sense)
 	{
 		cerr << "required distance < d_sense, but "<<distance<<" >= "<<d_sense<< endl;
-		GetInput(player_port, run_type, d_sense, distance, d_agorithm);
+		GetInput(player_port, run_type, d_sense, distance);
 	}
 
-	if (robot_type == robotAggregator)
-	{
-		GetOneInput(d_agorithm, "d_aggreagte");
-	}
-	else if(robot_type == robotDispersor)
-	{
-		GetOneInput(d_agorithm, "d_disperse");
-	}
-	else
-	{
-		cerr << "cannot parse parameter from input : unknown run_type" << endl;
-		GetInput(player_port, run_type, d_sense, distance, d_agorithm);	
-	}
-	
 	return true;
 }
 
@@ -90,13 +76,12 @@ int main(int argc, char *argv[])
 {
 	try
 	{
-		int player_port = 0;
-		string run_type = "";
-		int d_sense = 0;
-		int distance = 0;
-		int d_agorithm = 0;
+		int player_port = 6665;
+		string run_type = "a";
+		int d_sense = 140;
+		int distance = 100;
 
-		if (argc == 6)
+		if (argc == 5)
 		{
 			using namespace boost;
 
@@ -106,24 +91,23 @@ int main(int argc, char *argv[])
 				run_type = argv[2];
 				d_sense = lexical_cast<int>(argv[3]);
 				distance = lexical_cast<int>(argv[4]);
-				d_agorithm = lexical_cast<int>(argv[5]);
 
 				if (distance >= d_sense)
 				{
 					cerr << "required distance < d_sense, but "<<distance<<" >= "<<d_sense<< endl;
-					GetInput(player_port, run_type, d_sense, distance, d_agorithm);
+					GetInput(player_port, run_type, d_sense, distance);
 				}
 
 			}
 			catch (const bad_lexical_cast & e)
 			{
 				cerr << "cannot parse parameters from input : " << e.what() << endl;
-				GetInput(player_port, run_type, d_sense, distance, d_agorithm);
+				GetInput(player_port, run_type, d_sense, distance);
 			}
 		}
 		else
 		{
-			GetInput(player_port, run_type, d_sense, distance, d_agorithm);
+			GetInput(player_port, run_type, d_sense, distance);
 		}
 
 		boost::asio::io_service io_service_;
@@ -133,12 +117,14 @@ int main(int argc, char *argv[])
 		if (run_type.compare("a") == 0)
 		{
 			robot_type = robotAggregator;
-			cout << "Create a Aggregator" << endl;
 		}
-		else
+		else if (run_type.compare("b") == 0)
 		{
 			robot_type = robotDispersor;
-			cout << "Create a Dispersor" << endl;
+		}
+		else 
+		{
+			robot_type = robotFollower;
 		}
 
 		boost::scoped_ptr<Robot> robot(RobotFactory::CreateRobot(robot_type, io_service_, defaultHost, player_port));

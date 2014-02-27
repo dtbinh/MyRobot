@@ -4,7 +4,7 @@ RM=rm
 MKDIR=mkdir
 
 # -----Begin user-editable area-----
-preDef=BOOST_SIGNALS_NO_DEPRECATION_WARNING 
+preDef=BOOST_SIGNALS_NO_DEPRECATION_WARNING linux32
 ##boost_dir=/mnt/hgfs/DistributedIntelligenceInRobotics/boost_1_55_0
 boost_dir=/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0
 player_inc=/usr/local/include/player-3.0
@@ -16,7 +16,7 @@ compiler=g++
 linker=g++
 # -----End user-editable area-----
 
-OUTDIR=bin
+OUTDIR=bin32
 OUTFILE=./$(OUTDIR)/robot
 CFG_INC=-I$(player_inc) -I$(boost_inc) 
 CFG_LIB=$(player_lib) $(boost_lib) 
