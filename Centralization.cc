@@ -5,7 +5,7 @@
 #include <boost/make_shared.hpp>
 
 const int defaultListenPort = 9000;
-const int defautBroadCastPort = 9001;
+const int defautBroadCastPort = 9000;
 
 using namespace std;
 using namespace boost;
@@ -54,11 +54,6 @@ void Centralization::BroadcastLocation(double x_pos, double y_pos)
 	TalkToAll(msg.str(), defautBroadCastPort);
 }
 
-void Centralization::RegisterListening()
-{
-	ListenFromAll();	
-}
-
 void Centralization::ParseMessage(string msg)
 {
 	vector<string> strs;
@@ -98,17 +93,15 @@ void Centralization::ParseMessage(string msg)
 	}
 }
 
-void Centralization::handle_read(unsigned char * buf, const boost::system::error_code& error, size_t bytes_transferred)
+void Centralization::ParseRead(unsigned char * buf, size_t bytes_transferred)
 {
-	if(!error && bytes_transferred > 0)
+	if(bytes_transferred > 0)
 	{
 		string msg(buf, buf + bytes_transferred);
 		cout <<"Centralization Receive msg: "<< msg << endl;
 
 		ParseMessage(msg);
 	}
-
-	//ListenFromAll(boost::bind(&Centralization::handle_read, this, _1, _2, _3));
 }
 
 int Centralization::getDsense()
@@ -155,7 +148,7 @@ bool Centralization::CheckNeighbor(queue<CoorPtr> others)
 
 void Centralization::Resume()
 {
-	//LaserAvoidance();
+	LaserAvoidance();
 	BroadcastLocation(GetXPos(), GetYPos());
 	
 	queue<CoorPtr> neighbor = FilterNeighbor(getDsense());
@@ -184,7 +177,7 @@ void Centralization::Run()
 {
 	Identify();
 	
-	RegisterListening();
+	ListenFromAll();
 
 	Resume();
 }

@@ -22,9 +22,9 @@ Leader::~Leader()
 	
 }
 
-void Leader::handle_read(unsigned char * buf, const boost::system::error_code& error, size_t bytes_transferred)
+void Leader::ParseRead(unsigned char * buf, size_t bytes_transferred)
 {
-	if(!error && bytes_transferred > 0)
+	if(bytes_transferred > 0)
 	{
 		cout <<"Recive msg: "<< string(buf, buf+bytes_transferred) << endl;	
 
@@ -34,10 +34,6 @@ void Leader::handle_read(unsigned char * buf, const boost::system::error_code& e
 		{
 			countMsg_ = 0;
 			Start(false);
-		}
-		else
-		{
-			ListenFromAll();	
 		}
 	}
 }

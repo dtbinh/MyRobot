@@ -41,9 +41,9 @@ bool Follower::ParseMsg(const unsigned char * msg, size_t length)
 	return true;
 }
 
-void Follower::handle_read(unsigned char * buf, const boost::system::error_code& error, size_t bytes_transferred)
+void Follower::ParseRead(unsigned char * buf, size_t bytes_transferred)
 {
-	if(!error && bytes_transferred > 0)
+	if(bytes_transferred > 0)
 	{
 		cout <<"Receive msg: "<< string(buf, buf + bytes_transferred) << endl;
 		if(ParseMsg(buf, bytes_transferred))
@@ -56,8 +56,6 @@ void Follower::handle_read(unsigned char * buf, const boost::system::error_code&
 			Stop();
 		}
 	}
-
-	ListenFromAll();
 }
 
 void Follower::Run()

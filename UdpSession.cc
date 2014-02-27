@@ -1,12 +1,14 @@
 #include "UdpSession.h"
 #include <boost/lexical_cast.hpp>
 #include <boost/bind.hpp>
+#include "CommPoint.h"
 
 using namespace std;
 
-UdpSession::UdpSession(boost::asio::io_service & io_service, int port, string ip)
+UdpSession::UdpSession(boost::asio::io_service & io_service, int port, string ip, CommPoint & cp)
 :io_service_(io_service),
-socket_(io_service)
+socket_(io_service),
+commp_(cp)
 {
 	boost::asio::ip::udp::endpoint listen_endpoint(boost::asio::ip::address::from_string(ip), port);
     socket_.open(listen_endpoint.protocol());

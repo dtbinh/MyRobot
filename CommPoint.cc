@@ -6,7 +6,7 @@ using namespace boost::asio;
 using namespace std;
 
 CommPoint::CommPoint(io_service & io_service, int listen_port)
-:comm_channel_(new UdpSession(io_service, listen_port, defaultBroadCastAddr))
+:comm_channel_(new UdpSession(io_service, listen_port, defaultBroadCastAddr, *this))
 {
 	
 }
@@ -36,20 +36,4 @@ int CommPoint::TalkToAll(std::string msg, int broadcastPort, std::string broadca
 	}
 
 	return -1;
-}
-
-void CommPoint::handle_read(unsigned char * buf, const boost::system::error_code& error, size_t bytes_transferred)
-{
-	if(!error)
-	{
-		cout <<"CommPoint Recv Msg: "<< string(buf, buf + bytes_transferred) << endl;
-	}
-}
-
-void CommPoint::handle_write(const boost::system::error_code& error, size_t bytes_transferred)
-{
-	if (!error)
-	{
-		cout<<bytes_transferred<< " bytes msg Sent" << endl;
-	}
 }

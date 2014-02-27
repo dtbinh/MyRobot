@@ -8,7 +8,6 @@ const std::string startMsg = "start";
 const std::string stopMsg = "stop";
 const std::string resumeMsg = "resume";
 
-//const std::string defaultBroadCastAddr = "192.168.134.255";
 const std::string defaultBroadCastAddr = "10.0.2.255";
 
 const int locationMsgLen = 10;
@@ -22,13 +21,8 @@ public:
 	int ListenFromAll();
 	int TalkToAll(std::string msg, int broadcastPort, std::string broadcastIP = defaultBroadCastAddr);
 
-private:	
-	void handle_read(unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred);
-	void handle_write(const boost::system::error_code& error,size_t bytes_transferred);
+	virtual void ParseRead(unsigned char * buf, size_t bytes_transferred) = 0;
 
-protected:
-	unsigned char recv_data_[max_msg_len];
-	
 private:
 	boost::shared_ptr<UdpSession> comm_channel_;
 };

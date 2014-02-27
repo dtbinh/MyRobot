@@ -10,9 +10,9 @@ public:
 	~Follower();
 
 	virtual void Run();
+	virtual void ParseRead(unsigned char * buf, size_t bytes_transferred);
 
 private:
-	void handle_read(unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred);
 	void SendLocation();
 	bool ParseMsg(const unsigned char * msg, size_t length);
 

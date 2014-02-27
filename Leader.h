@@ -12,11 +12,11 @@ public:
 	~Leader();	
 
 	virtual void Run();
+	virtual void ParseRead(unsigned char * buf, size_t bytes_transferred);
 
 private:
 	void Start(bool bFirstTime);
 	void handle_timerCount(const boost::system::error_code& error, bool  bFirstCount);
-	void handle_read(unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred);
 
 private:
 	boost::asio::deadline_timer timerCount_;

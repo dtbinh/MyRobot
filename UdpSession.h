@@ -8,6 +8,8 @@
 typedef boost::function<void (unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred)> typeHandleRead;
 typedef boost::function<void (const boost::system::error_code& error,size_t bytes_transferred)> typeHandleWrite;
 
+class CommPoint;
+
 const int max_msg_len = 256;
 
 using boost::asio::ip::udp;
@@ -15,7 +17,7 @@ using boost::asio::ip::udp;
 class UdpSession : public boost::enable_shared_from_this<UdpSession>
 {
 public:
-	UdpSession(boost::asio::io_service & io_service, int port, std::string ip);
+	UdpSession(boost::asio::io_service & io_service, int port, std::string ip, CommPoint & cp);
 	~UdpSession();
 
 	int OpenConnect(void);
@@ -35,9 +37,7 @@ private:
 private:
 	boost::asio::io_service & io_service_;
 	boost::asio::ip::udp::udp::socket socket_;
+	CommPoint & commp_;
 
 	unsigned char recv_data_[max_msg_len];
-
-	//typeHandleRead after_read;
-	//typeHandleWrite after_write;
 };

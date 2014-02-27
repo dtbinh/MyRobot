@@ -19,6 +19,7 @@ public:
 	int getInterDistance();
 	
 	void Run();
+	void ParseRead(unsigned char * buf, size_t bytes_transferred);
 
 protected:
 	virtual bool CompareToInterRobot(CoorPtr other) = 0;
@@ -27,14 +28,11 @@ protected:
 
 private:
 	void BroadcastLocation(double x_pos, double y_pos);
-	void RegisterListening();
-
 	std::queue<CoorPtr> FilterNeighbor(int d_sense);
 	std::queue<CoorPtr> FilterNeighbor(boost::unordered_map<short, CoorPtr> & other, int d_sense);
 	CoorPtr CalcCenter(std::queue<CoorPtr> others);
 	bool CheckNeighbor(std::queue<CoorPtr> others);
 
-	void handle_read(unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred);
 	void handle_timerWalk(const boost::system::error_code& error);
 	void ParseMessage(std::string msg);
 	void Resume();
