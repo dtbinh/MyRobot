@@ -1,11 +1,12 @@
 #pragma once
 #include <queue>
 #include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp> 
 
 class Coordinate;
 typedef boost::shared_ptr<Coordinate> CoorPtr;
 
-class Coordinate
+class Coordinate : public boost::enable_shared_from_this<Coordinate>
 {
 public:
 	Coordinate(double x, double y);

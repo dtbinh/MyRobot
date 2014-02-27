@@ -16,42 +16,23 @@ CommPoint::~CommPoint()
 
 }
 
-int CommPoint::ListenFromAll(typeHandleRead read_callback /* = 0 */)
+int CommPoint::ListenFromAll()
 {
 	if (comm_channel_)
 	{
-		if(read_callback == 0)
-		{
-			return comm_channel_->ReadFromConnect((unsigned char *)&recv_data_, boost::bind(&CommPoint::handle_read, this, _1, _2, _3));
-		}
-		else
-		{
-			return comm_channel_->ReadFromConnect((unsigned char *)&recv_data_, read_callback);
-		}
+		return comm_channel_->ReadFromConnect();
 	}
 
 	return -1;
 }
 
-int CommPoint::TalkToAll(std::string msg, int broadcastPort, typeHandleWrite write_callback /* = 0 */, std::string broadcastIP /*= defaultBroadCastAddr*/)
+int CommPoint::TalkToAll(std::string msg, int broadcastPort, std::string broadcastIP /*= defaultBroadCastAddr*/)
 {
 	if(comm_channel_)
 	{
 		cout<<"Send msg: " << msg << endl;
-		if(write_callback == 0)
-		{
-			return comm_channel_->WriteToRemote(comm_channel_->GenerateRemote(broadcastPort, broadcastIP), 
-				(const unsigned char *)msg.c_str(), 
-				msg.length(), 
-				boost::bind(&CommPoint::handle_write, this, _1, _2));
-		}
-		else
-		{
-			return comm_channel_->WriteToRemote(comm_channel_->GenerateRemote(broadcastPort, broadcastIP), 
-				(const unsigned char *)msg.c_str(), 
-				msg.length(), 
-				write_callback);
-		}
+		
+		return comm_channel_->WriteToRemote(comm_channel_->GenerateRemote(broadcastPort, broadcastIP), (const unsigned char *)msg.c_str(), msg.length());
 	}
 
 	return -1;

@@ -57,11 +57,11 @@ void Follower::handle_read(unsigned char * buf, const boost::system::error_code&
 		}
 	}
 
-	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2, _3));
+	ListenFromAll();
 }
 
 void Follower::Run()
 {
 	SendLocation();
-	ListenFromAll(boost::bind(&Follower::handle_read, this, _1, _2, _3));
+	ListenFromAll();
 }

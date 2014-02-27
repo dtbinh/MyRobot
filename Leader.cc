@@ -37,7 +37,7 @@ void Leader::handle_read(unsigned char * buf, const boost::system::error_code& e
 		}
 		else
 		{
-			ListenFromAll(boost::bind(&Leader::handle_read, this, _1, _2, _3));	
+			ListenFromAll();	
 		}
 	}
 }
@@ -52,7 +52,7 @@ void Leader::handle_timerCount(const boost::system::error_code& error, bool bFir
     	{
     		cout << duration << " seconds passed. Current's robot locations are:" << endl;
     		Stop();
-    		ListenFromAll(boost::bind(&Leader::handle_read, this, _1, _2, _3));	
+    		ListenFromAll();	
     	}
     	else
     	{

@@ -15,6 +15,7 @@ socket_(io_service)
 	socket_.set_option(boost::asio::socket_base::broadcast(true));
 
 	socket_.bind(listen_endpoint);
+
 }
 
 UdpSession::~UdpSession() 
@@ -50,7 +51,7 @@ int UdpSession::CloseConnect(void)
 	return 0;
 }
 
-int UdpSession::ReadFromConnect(unsigned char * buf, typeHandleRead read_callback, size_t bytes_transferred /*= 0*/)
+int UdpSession::ReadFromConnect()
 {
 	if(!getConnectAlive())
 	{
@@ -59,46 +60,28 @@ int UdpSession::ReadFromConnect(unsigned char * buf, typeHandleRead read_callbac
 
 	udp::endpoint remote_endpoint;
 
-	if (read_callback == 0)
-	{
-		socket_.async_receive_from(boost::asio::buffer(buf,max_msg_len),remote_endpoint,
-			boost::bind(&UdpSession::handle_read,
-			this,
-			buf,
-			boost::asio::placeholders::error,
-			boost::asio::placeholders::bytes_transferred));
-	}
-	else
-	{
-		socket_.async_receive_from(boost::asio::buffer(buf,max_msg_len), 
-			remote_endpoint, 
-			boost::bind(read_callback, buf, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
-	}
+	socket_.async_receive_from(boost::asio::buffer(recv_data_,max_msg_len),remote_endpoint,
+		boost::bind(&UdpSession::handle_read,
+		shared_from_this(),
+		recv_data_,
+		boost::asio::placeholders::error,
+		boost::asio::placeholders::bytes_transferred));
 
 	return 0;
 }
 
-int UdpSession::WriteToRemote(udp::endpoint remote_endpoint, const unsigned char * buf, size_t bytes_transferred, typeHandleWrite write_callback /* = 0*/)
+int UdpSession::WriteToRemote(udp::endpoint remote_endpoint, const unsigned char * buf, size_t bytes_transferred)
 {
 	if(!getConnectAlive())
 	{
 		return -1;
 	}
 
-	if (write_callback == 0)
-	{
-		socket_.async_send_to(boost::asio::buffer(buf, bytes_transferred),remote_endpoint,
-			boost::bind(&UdpSession::handle_write,
-			this,
-			boost::asio::placeholders::error,
-			boost::asio::placeholders::bytes_transferred));
-	}
-	else
-	{
-		socket_.async_send_to(boost::asio::buffer(buf, bytes_transferred),
-			remote_endpoint, 
-			boost::bind(write_callback, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
-	}
+	socket_.async_send_to(boost::asio::buffer(buf, bytes_transferred),remote_endpoint,
+		boost::bind(&UdpSession::handle_write,
+		shared_from_this(),
+		boost::asio::placeholders::error,
+		boost::asio::placeholders::bytes_transferred));
 
 	return 0;
 }
@@ -113,6 +96,8 @@ void UdpSession::handle_read(unsigned char * buf, const boost::system::error_cod
 	{
 		cout<<"UdpSession read error"<<endl;
 	}
+
+	ReadFromConnect();
 }
 
 void UdpSession::handle_write(const boost::system::error_code& error, size_t bytes_transferred)

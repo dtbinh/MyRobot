@@ -5,7 +5,7 @@
 #include <boost/make_shared.hpp>
 
 const int defaultListenPort = 9000;
-const int defautBroadCastPort = 9000;
+const int defautBroadCastPort = 9001;
 
 using namespace std;
 using namespace boost;
@@ -56,7 +56,7 @@ void Centralization::BroadcastLocation(double x_pos, double y_pos)
 
 void Centralization::RegisterListening()
 {
-	ListenFromAll(boost::bind(&Centralization::handle_read, this, _1, _2, _3));	
+	ListenFromAll();	
 }
 
 void Centralization::ParseMessage(string msg)
@@ -108,7 +108,7 @@ void Centralization::handle_read(unsigned char * buf, const boost::system::error
 		ParseMessage(msg);
 	}
 
-	ListenFromAll(boost::bind(&Centralization::handle_read, this, _1, _2, _3));
+	//ListenFromAll(boost::bind(&Centralization::handle_read, this, _1, _2, _3));
 }
 
 int Centralization::getDsense()

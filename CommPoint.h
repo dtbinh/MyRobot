@@ -1,7 +1,7 @@
 #pragma once
 
 #include <boost/asio.hpp>
-#include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 #include "UdpSession.h"
 
 const std::string startMsg = "start";
@@ -19,8 +19,8 @@ public:
 	CommPoint(boost::asio::io_service & io_service, int listen_port);
 	virtual ~CommPoint(void);
 
-	int ListenFromAll(typeHandleRead read_callback = 0);
-	int TalkToAll(std::string msg, int broadcastPort, typeHandleWrite write_callback = 0, std::string broadcastIP = defaultBroadCastAddr);
+	int ListenFromAll();
+	int TalkToAll(std::string msg, int broadcastPort, std::string broadcastIP = defaultBroadCastAddr);
 
 private:	
 	void handle_read(unsigned char * buf,const boost::system::error_code& error,size_t bytes_transferred);
@@ -30,5 +30,5 @@ protected:
 	unsigned char recv_data_[max_msg_len];
 	
 private:
-	boost::scoped_ptr<UdpSession> comm_channel_;
+	boost::shared_ptr<UdpSession> comm_channel_;
 };

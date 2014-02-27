@@ -45,7 +45,7 @@ CoorPtr Coordinate::CalCenter(queue<CoorPtr> others)
 {
 	if (others.size() == 0)
 	{
-		return boost::shared_ptr<Coordinate>(this);
+		return shared_from_this();
 	}
 	else if(others.size() == 1)
 	{
