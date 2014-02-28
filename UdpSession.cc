@@ -81,7 +81,7 @@ int UdpSession::WriteToRemote(udp::endpoint remote_endpoint, const unsigned char
 
 	socket_.async_send_to(boost::asio::buffer(buf, bytes_transferred),remote_endpoint,
 		boost::bind(&UdpSession::handle_write,
-		shared_from_this(),
+		this, //shared_from_this(),
 		boost::asio::placeholders::error,
 		boost::asio::placeholders::bytes_transferred));
 
@@ -92,7 +92,8 @@ void UdpSession::handle_read(unsigned char * buf, const boost::system::error_cod
 {
 	if(!error)
 	{
-		cout<<"UdpSession recv msg: " << buf << endl;
+		//cout<<"UdpSession recv msg: " << buf << endl;
+		commp_.ParseRead(buf,bytes_transferred);
 	}
 	else
 	{
@@ -106,11 +107,11 @@ void UdpSession::handle_write(const boost::system::error_code& error, size_t byt
 {
 	if(!error)
 	{
-		cout<<bytes_transferred<<" bytes sent"<<endl;
+		//cout<<bytes_transferred<<" bytes sent"<<endl;
 	}
 	else 
 	{
-		cout<<"udp write error"<<endl;	
+		cout<<"UdpSession write error"<<endl;	
 	}
 }
 

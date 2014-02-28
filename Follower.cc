@@ -20,8 +20,8 @@ Follower::~Follower()
 
 void Follower::SendLocation()
 {
-	int x_pos = GetXPos();
-	int y_pos = GetYPos();
+	double x_pos = GetXPos();
+	double y_pos = GetYPos();
 
 	ostringstream msg;
 	msg << myPort_ <<" : (" << x_pos << ", " << y_pos << ")";

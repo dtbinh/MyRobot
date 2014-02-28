@@ -39,27 +39,40 @@ double LaserRobot::GetYaw()
   return pp_->GetYaw();
 }
 
-int LaserRobot::StartMoving()
+double LaserRobot::GetXSpeed()
 {
-  pp_->SetSpeed(1.0, 0.0);
+  return pp_->GetXSpeed();
 }
 
-int LaserRobot::StopMoving()
+double LaserRobot::GetYSpeed()
 {
-  pp_->SetSpeed(0.0, 0.0);
-
-  return 0;
+  return pp_->GetYSpeed();
 }
 
-void LaserRobot::SetSpeed(double forwardSpeed, double turnSpeed)
+double LaserRobot::GetYawSpeed()
 {
-  pp_->SetSpeed(forwardSpeed, turnSpeed);
+  return pp_->GetYawSpeed();
 }
 
-void LaserRobot::LaserAvoidance()
+void LaserRobot::SetSpeed(double xSpeed, double turnSpeed)
 {
-  double newspeed = 0;
-  double newturnrate = 0;
+  pp_->SetSpeed(xSpeed, turnSpeed);
+}
+
+void LaserRobot::SetSpeed(double xSpeed, double ySpeed, double turnSpeed)
+{
+  pp_->SetSpeed(xSpeed, ySpeed, turnSpeed);
+}
+
+void LaserRobot::GoTo(double x_pos, double y_pos)
+{
+  pp_->GoTo(x_pos,y_pos, 0);
+}
+
+void LaserRobot::LaserAvoidance(double & newspeed, double & newturnrate)
+{
+  //double newspeed = 0;
+  //double newturnrate = 0;
 
   // this blocks until new data comes; 10Hz by default
   robot_->Read();
@@ -68,9 +81,7 @@ void LaserRobot::LaserAvoidance()
   double minL = lp_->GetMinLeft();
 
   // laser avoid (stolen from esben's java example)
-  std::cout << "minR: " << minR
-            << "minL: " << minL
-            << std::endl;
+  //std::cout << "minR: " << minR << "minL: " << minL << std::endl;
 
   double l = (1e5*minR)/500-100;
   double r = (1e5*minL)/500-100;
@@ -80,18 +91,18 @@ void LaserRobot::LaserAvoidance()
   if (r > 100)
     r = 100;
 
-  newspeed = (r+l)/1e3;
+  newspeed = (r+l)/1e3; 
 
   newturnrate = (r-l);
   newturnrate = limit(newturnrate, -40.0, 40.0);
   newturnrate = dtor(newturnrate);
 
-  std::cout << "speed: " << newspeed
-            << " turn: " << newturnrate
-            << std::endl;
+  //std::cout << "speed: " << newspeed << " turn: " << newturnrate << std::endl;
 
+  //std::cout<<GetXPos()<<", "<<GetYPos()<<std::endl;
+  
   // write commands to robot
-  pp_->SetSpeed(newspeed, newturnrate);
+  //pp_->SetSpeed(newspeed, newturnrate);
 }
 
 void LaserRobot::handle_timerWalk(const boost::system::error_code& error)
@@ -104,21 +115,25 @@ void LaserRobot::handle_timerWalk(const boost::system::error_code& error)
 
 void LaserRobot::Resume()
 {
-    LaserAvoidance();
-    timerWalk_.expires_from_now(boost::posix_time::millisec(200));
+    double newspeed = 0.0;
+    double newturnrate = 0.0;
+    LaserAvoidance(newspeed, newturnrate);
+    SetSpeed(newspeed, newturnrate);
+
+    timerWalk_.expires_from_now(boost::posix_time::millisec(500));
     timerWalk_.async_wait(boost::bind(&LaserRobot::handle_timerWalk, this, boost::asio::placeholders::error));
 }
 
 void LaserRobot::Walk()
 {
-  StartMoving();
+  SetSpeed(0.5, 0.0);
   Resume();
 }
 
 void LaserRobot::Stop()
 {
   timerWalk_.cancel();
-  StopMoving();
+  SetSpeed(0.0, 0.0);
 }
 
 void LaserRobot::Run()

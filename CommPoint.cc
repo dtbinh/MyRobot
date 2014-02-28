@@ -1,6 +1,5 @@
 #include <boost/bind.hpp>
 #include "CommPoint.h"
-#include "Communicate.h"
 
 using namespace boost::asio;
 using namespace std;
@@ -30,7 +29,7 @@ int CommPoint::TalkToAll(std::string msg, int broadcastPort, std::string broadca
 {
 	if(comm_channel_)
 	{
-		cout<<"Send msg: " << msg << endl;
+		//cout<<"Send msg: " << msg << endl;
 		
 		return comm_channel_->WriteToRemote(comm_channel_->GenerateRemote(broadcastPort, broadcastIP), (const unsigned char *)msg.c_str(), msg.length());
 	}

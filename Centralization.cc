@@ -7,6 +7,8 @@
 const int defaultListenPort = 9000;
 const int defautBroadCastPort = 9000;
 
+const double forwardSpeed = 0.5;
+
 using namespace std;
 using namespace boost;
 
@@ -52,6 +54,8 @@ void Centralization::BroadcastLocation(double x_pos, double y_pos)
 	msg << myPort_ <<":"<< x_pos <<","<< y_pos;
 
 	TalkToAll(msg.str(), defautBroadCastPort);
+
+	//cout<<"Recv Robot Num = "<<robotCoors_.size()<<endl;
 }
 
 void Centralization::ParseMessage(string msg)
@@ -98,28 +102,28 @@ void Centralization::ParseRead(unsigned char * buf, size_t bytes_transferred)
 	if(bytes_transferred > 0)
 	{
 		string msg(buf, buf + bytes_transferred);
-		cout <<"Centralization Receive msg: "<< msg << endl;
+		//cout <<"Centralization Receive msg: "<< msg << endl;
 
 		ParseMessage(msg);
 	}
 }
 
-int Centralization::getDsense()
+double Centralization::getDsense()
 {
 	return d_sense_;
 }
 
-void Centralization::setDsense(int val)
+void Centralization::setDsense(double val)
 {
 	d_sense_ = val;
 }
 
-void Centralization::setInterDistance(int val)
+void Centralization::setInterDistance(double val)
 {
 	inter_distance_ = val;
 }
 
-int Centralization::getInterDistance()
+double Centralization::getInterDistance()
 {
 	return inter_distance_;
 }
@@ -148,13 +152,14 @@ bool Centralization::CheckNeighbor(queue<CoorPtr> others)
 
 void Centralization::Resume()
 {
-	LaserAvoidance();
 	BroadcastLocation(GetXPos(), GetYPos());
 	
 	queue<CoorPtr> neighbor = FilterNeighbor(getDsense());
+
 	if(CheckNeighbor(neighbor))
 	{
-		Moving(CalcCenter(neighbor));
+		CoorPtr center = CalcCenter(neighbor);
+		Moving(center);
 	}
 	else
 	{
@@ -162,7 +167,7 @@ void Centralization::Resume()
 	}
 
 	timerWalk_.expires_from_now(boost::posix_time::millisec(200));
-    timerWalk_.async_wait(boost::bind(&Centralization::handle_timerWalk, this, boost::asio::placeholders::error));
+    timerWalk_.async_wait(boost::bind(&Centralization::handle_timerWalk, this/*shared_from_this()*/, boost::asio::placeholders::error));
 }
 
 void Centralization::handle_timerWalk(const boost::system::error_code& error)
@@ -178,6 +183,13 @@ void Centralization::Run()
 	Identify();
 	
 	ListenFromAll();
+
+	double newspeed;
+	double newturnrate;
+	SetSpeed(forwardSpeed, 0.0);
+	
+	LaserAvoidance(newspeed, newturnrate);
+	SetSpeed(newspeed, newturnrate);
 
 	Resume();
 }

@@ -11,4 +11,7 @@ public:
 	virtual void Moving(CoorPtr destination);
 	virtual void Identify();
 
+protected:
+	bool ComapreToCenter(CoorPtr center);
+
 };

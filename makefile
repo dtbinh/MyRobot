@@ -8,9 +8,9 @@ preDef=BOOST_SIGNALS_NO_DEPRECATION_WARNING
 ##boost_dir=/mnt/hgfs/DistributedIntelligenceInRobotics/boost_1_55_0
 boost_dir=/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0
 player_inc=/usr/local/include/player-3.0
-player_lib=-L/usr/local/lib -lplayerc++ -lboost_thread -lboost_signals -lplayerc -lm -lz -lplayerinterface -lplayerwkb -lgeos -lgeos_c -lplayercommon
+player_lib=-L/usr/local/lib -lplayerc++ -lplayerc -lm -lz -lrt -lplayerinterface -lplayerwkb -lgeos -lgeos_c -lplayercommon
 boost_inc=$(boost_dir)
-boost_lib=-L$(boost_dir)/stage/lib32 -lboost_system -lrt
+boost_lib=-L$(boost_dir)/stage/lib32 -lboost_system -lboost_thread -lboost_signals
 
 compiler=g++
 linker=g++

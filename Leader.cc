@@ -5,8 +5,8 @@ using namespace std;
 const int defaultListenPort = 9000;
 const int defautBroadCastPort = 9001;
 
-const int duration = 20;
-const int follower_num = 5;
+const int duration = 10;
+const int follower_num = 1;
 
 Leader::Leader(boost::asio::io_service & io_service, string host, int player_port)
 :LaserRobot(io_service, host, player_port),
@@ -75,7 +75,7 @@ void Leader::Start(bool bFirstTime)
 	cout<<"All robots "<<msg<<" safewalking."<<endl;
 
 	timerCount_.expires_from_now(boost::posix_time::seconds(duration));
-  	timerCount_.async_wait(boost::bind(&Leader::handle_timerCount, this, boost::asio::placeholders::error, bFirstTime));
+  	timerCount_.async_wait(boost::bind(&Leader::handle_timerCount, this, /*shared_from_this(),*/ boost::asio::placeholders::error, bFirstTime));
 
 	cout << "leader is running..." << endl;
   	Walk();

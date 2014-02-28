@@ -2,6 +2,8 @@
 
 using namespace std;
 
+const double forwardSpeed = 0.5;
+
 Dispersor::Dispersor(boost::asio::io_service & io_service, string host, int player_port)
 :Centralization(io_service, host, player_port)
 {
@@ -29,11 +31,12 @@ void Dispersor::Moving(CoorPtr source)
 {
 	double diffY = GetYPos() - source->getY();
 	double diffX = GetXPos() - source->getX();
+	double desired_yaw = atan2(diffY, diffX) - GetYaw();
+	//SetSpeed(forwardSpeed, desired_yaw);
 
-	double desired_yaw = atan2(diffY, diffX);
-	double current_yaw = GetYaw();
-
-	double diff_yaw = desired_yaw - current_yaw;
-
-	SetSpeed(forwardSpeed, diff_yaw);
+	double newspeed = 0.0;
+	double avoid_yaw = 0.0;
+	LaserAvoidance(newspeed, avoid_yaw);
+	
+	SetSpeed(newspeed, (avoid_yaw + desired_yaw) / 2);
 }

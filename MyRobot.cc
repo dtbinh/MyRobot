@@ -3,11 +3,13 @@
 #include <libplayerc++/playerc++.h>
 #include <boost/lexical_cast.hpp>
 #include "RobotFactory.h"
+#include "Centralization.h"
 
 using namespace std;
 
 const int defaultPort = 6665;
 const string defaultHost = "localhost";
+const double inch2meter = 0.0254;
 
 int GetOneInput(string & val, string name)
 {
@@ -20,9 +22,17 @@ int GetOneInput(string & val, string name)
 	{
 		return robotAggregator;
 	}
-	else if(val.compare("b") == 0)
+	else if(val.compare("d") == 0)
 	{
 		return robotDispersor;
+	}
+	else if (val.compare("l") == 0)
+	{
+		return robotLeader;
+	}
+	else if(val.compare("f") == 0)
+	{
+		return robotFollower;
 	}
 
 	cerr << "cannot parse parameter from input : unknown run_type" << endl;
@@ -76,10 +86,10 @@ int main(int argc, char *argv[])
 {
 	try
 	{
-		int player_port = 6665;
-		string run_type = "a";
-		int d_sense = 140;
-		int distance = 100;
+		int player_port;
+		string run_type;
+		int d_sense;
+		int distance;
 
 		if (argc == 5)
 		{
@@ -118,16 +128,23 @@ int main(int argc, char *argv[])
 		{
 			robot_type = robotAggregator;
 		}
-		else if (run_type.compare("b") == 0)
+		else if (run_type.compare("d") == 0)
 		{
 			robot_type = robotDispersor;
 		}
-		else 
+		else if (run_type.compare("l") == 0)
+		{
+			robot_type = robotLeader;
+		}
+		else if (run_type.compare("f") == 0)
 		{
 			robot_type = robotFollower;
 		}
 
-		boost::scoped_ptr<Robot> robot(RobotFactory::CreateRobot(robot_type, io_service_, defaultHost, player_port));
+		boost::shared_ptr<Robot> robot(RobotFactory::CreateRobot(robot_type, io_service_, defaultHost, player_port));
+		boost::static_pointer_cast<Centralization>(robot)->setDsense(d_sense * inch2meter);
+		boost::static_pointer_cast<Centralization>(robot)->setInterDistance(distance * inch2meter);
+
 		robot->Run();
 		io_service_.run();
 

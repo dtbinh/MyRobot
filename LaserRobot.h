@@ -19,16 +19,22 @@ protected:
 	double GetXPos();
 	double GetYPos();
 	double GetYaw();
-	void SetSpeed(double forwardSpeed, double turnSpeed);
+
+	double GetXSpeed();
+	double GetYSpeed();
+	double GetYawSpeed();
 	
+	void SetSpeed(double xSpeed, double turnSpeed);
+	void SetSpeed(double xSpeed, double ySpeed, double turnSpeed);
+	
+	void GoTo(double x_pos, double y_pos);
+
 	void Walk();
 	void Stop();
 	
-	void LaserAvoidance();
+	void LaserAvoidance(double & newspeed, double & newturnrate);
 	
 private:
-	int StopMoving();
-	int StartMoving();
 	void Resume();
 	void handle_timerWalk(const boost::system::error_code& error);
 

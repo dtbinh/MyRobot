@@ -5,18 +5,16 @@
 #include "CommPoint.h"
 #include "LaserRobot.h"
 
-const double forwardSpeed = 2;
-
-class Centralization : public CommPoint, public LaserRobot
+class Centralization : public CommPoint, public LaserRobot//, public boost::enable_shared_from_this<Centralization>
 {
 public:
 	Centralization(boost::asio::io_service & io_service, std::string host, int player_port);
 	~Centralization();
 
-	void setDsense(int val);
-	int getDsense();
-	void setInterDistance(int val);
-	int getInterDistance();
+	void setDsense(double val);
+	double getDsense();
+	void setInterDistance(double val);
+	double getInterDistance();
 	
 	void Run();
 	void ParseRead(unsigned char * buf, size_t bytes_transferred);
@@ -42,6 +40,6 @@ private:
 	boost::unordered_map<short, CoorPtr> robotCoors_;
 	boost::asio::deadline_timer timerWalk_;
 
-	int d_sense_;
-	int inter_distance_;
+	double d_sense_;
+	double inter_distance_;
 };

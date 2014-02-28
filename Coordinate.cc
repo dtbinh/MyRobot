@@ -8,7 +8,7 @@ Coordinate::Coordinate(double x, double y)
 :x_(x),
 y_(y)
 {
-
+	
 }
 
 Coordinate::~Coordinate()

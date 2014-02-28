@@ -20,6 +20,8 @@ public:
 	
 	double getX();
 	double getY();
+
+private:
 	void setX(double val);
 	void setY(double val);
 

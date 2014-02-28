@@ -3,6 +3,8 @@
 
 using namespace std;
 
+const double forwardSpeed = 0.5;
+
 Aggregator::Aggregator(boost::asio::io_service & io_service, string host, int player_port)
 :Centralization(io_service, host, player_port)
 {
@@ -26,15 +28,32 @@ bool Aggregator::CompareToInterRobot(CoorPtr other)
 	return location.getDistance(other) > getInterDistance();
 }
 
+bool Aggregator::ComapreToCenter(CoorPtr center)
+{
+	Coordinate location(GetXPos(), GetYPos());
+
+	return location.getDistance(center) > (getInterDistance() * 0.1);
+}
+
 void Aggregator::Moving(CoorPtr destination)
 {
-	double diffY = destination->getY() - GetYPos();
-	double diffX = destination->getX() - GetXPos();
+	if (ComapreToCenter(destination))
+	{
+		double newspeed = 0.0;
+		double avoid_yaw = 0.0;
+		LaserAvoidance(newspeed, avoid_yaw);
+		//SetSpeed(newspeed, avoid_yaw);
 
-	double desired_yaw = atan2(diffY, diffX);
-	double current_yaw = GetYaw();	
+		double diffY = destination->getY() - GetYPos();
+		double diffX = destination->getX() - GetXPos();
+		double desired_yaw = atan2(diffY, diffX) - GetYaw();
 
-	double diff_yaw = desired_yaw - current_yaw;
+		SetSpeed(newspeed, (desired_yaw + avoid_yaw) / 2);
 
-	SetSpeed(forwardSpeed, diff_yaw);
+		//GoTo(destination->getX(), destination->getY());
+	}
+	else
+	{
+		Stop();
+	}
 }
