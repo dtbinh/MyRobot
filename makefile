@@ -5,7 +5,6 @@ MKDIR=mkdir
 
 # -----Begin user-editable area-----
 preDef=BOOST_SIGNALS_NO_DEPRECATION_WARNING 
-##boost_dir=/mnt/hgfs/DistributedIntelligenceInRobotics/boost_1_55_0
 boost_dir=/media/sf_DistributedIntelligenceInRobotics/boost_1_55_0
 player_inc=/usr/local/include/player-3.0
 player_lib=-L/usr/local/lib -lplayerc++ -lplayerc -lm -lz -lrt -lplayerinterface -lplayerwkb -lgeos -lgeos_c -lplayercommon
@@ -27,8 +26,10 @@ $(OUTDIR)/Leader.o $(OUTDIR)/Follower.o $(OUTDIR)/Coordinate.o $(OUTDIR)/Central
 OBJ=$(COMMON_OBJ) $(CFG_OBJ)
 ALL_OBJ=$(COMMON_OBJ) $(CFG_LIB) 
 
-COMPILE=$(compiler) -c "-D$(preDef)" -g -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
-LINK=$(linker)  -g -o "$(OUTFILE)" $(ALL_OBJ)
+#COMPILE=$(compiler) -c "-D$(preDef)" -g -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
+#LINK=$(linker)  -g -o "$(OUTFILE)" $(ALL_OBJ)
+COMPILE=$(compiler) -c "-D$(preDef)" -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
+LINK=$(linker)  -o "$(OUTFILE)" $(ALL_OBJ)
 
 # Pattern rules
 $(OUTDIR)/%.o : %.cc

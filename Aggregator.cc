@@ -48,7 +48,7 @@ void Aggregator::Moving(CoorPtr destination)
 		double diffX = destination->getX() - GetXPos();
 		double desired_yaw = atan2(diffY, diffX) - GetYaw();
 
-		SetSpeed(newspeed, (desired_yaw * 2 + avoid_yaw) / 3);
+		SetSpeed(newspeed, (desired_yaw * 3 + avoid_yaw) / 4);
 
 		//GoTo(destination->getX(), destination->getY());
 	}
