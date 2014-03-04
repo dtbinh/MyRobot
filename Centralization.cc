@@ -31,13 +31,13 @@ queue<CoorPtr> Centralization::FilterNeighbor(int d_sense)
 	return FilterNeighbor(robotCoors_, d_sense);
 }
 
-queue<CoorPtr> Centralization::FilterNeighbor(unordered_map<short, CoorPtr> & others, int d_sense)
+queue<CoorPtr> Centralization::FilterNeighbor(unordered_map<int, CoorPtr> & others, int d_sense)
 {
 	queue<CoorPtr> ret;
 
 	Coordinate location(GetXPos(), GetYPos());
 
-	for(unordered_map<short, CoorPtr>::iterator it = others.begin(); it != others.end(); it++)
+	for(unordered_map<int, CoorPtr>::iterator it = others.begin(); it != others.end(); it++)
 	{
 		if (location.getDistance(it->second) <= d_sense)
 		{
@@ -65,10 +65,10 @@ void Centralization::ParseMessage(string msg)
 
 	if (strs.size() == 2)
 	{
-		short port = myPort_;
+		int port = myPort_;
 		try
     	{
-        	port = lexical_cast<short>(strs[0]);
+        	port = lexical_cast<int>(strs[0]);
     	}
     	catch(const bad_lexical_cast & e)
     	{

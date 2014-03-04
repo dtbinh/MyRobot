@@ -27,7 +27,7 @@ protected:
 private:
 	void BroadcastLocation(double x_pos, double y_pos);
 	std::queue<CoorPtr> FilterNeighbor(int d_sense);
-	std::queue<CoorPtr> FilterNeighbor(boost::unordered_map<short, CoorPtr> & other, int d_sense);
+	std::queue<CoorPtr> FilterNeighbor(boost::unordered_map<int, CoorPtr> & other, int d_sense);
 	CoorPtr CalcCenter(std::queue<CoorPtr> others);
 	bool CheckNeighbor(std::queue<CoorPtr> others);
 
@@ -37,7 +37,7 @@ private:
 	
 private:
 	int myPort_;
-	boost::unordered_map<short, CoorPtr> robotCoors_;
+	boost::unordered_map<int, CoorPtr> robotCoors_;
 	boost::asio::deadline_timer timerWalk_;
 
 	double d_sense_;
