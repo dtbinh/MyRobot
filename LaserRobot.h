@@ -7,6 +7,8 @@
 
 using namespace PlayerCc;
 
+const double DistacneThreshold = 1.0;
+
 class LaserRobot : public Robot
 {
 public:

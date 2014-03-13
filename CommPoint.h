@@ -7,6 +7,7 @@
 const std::string startMsg = "start";
 const std::string stopMsg = "stop";
 const std::string resumeMsg = "resume";
+const std::string finishMsg = "finish";
 const std::string lineMsg = "line";
 const std::string diamondMsg = "diamond";
 

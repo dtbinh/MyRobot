@@ -1,7 +1,8 @@
 #pragma once
+#include <boost/unordered_map.hpp>
 #include "LaserRobot.h"
 #include "CommPoint.h"
-#include "Coordinate.h"
+#include "Formation.h"
 
 class FormationFollower : public LaserRobot, public CommPoint
 {
@@ -13,6 +14,12 @@ public:
 
 private:
 	void ParseMessage(std::string msg);
+	void Move(CoorPtr destination);
 	void Movement(std::string formationType, CoorPtr leadr);
-	
+	FormationPtr getFormation(std::string type);
+	size_t Port2Index(int port);
+
+private:
+	int MyPort_;
+	boost::unordered_map<std::string, FormationPtr> formations_;
 };

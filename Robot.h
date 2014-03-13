@@ -1,5 +1,7 @@
 #pragma once
 
+const int defaultPlayerPort = 6665;
+
 class Robot
 {
 public:

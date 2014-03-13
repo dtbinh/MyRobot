@@ -6,7 +6,6 @@
 
 using namespace std;
 
-const int defaultPort = 6665;
 const string defaultHost = "localhost";
 //const double inch2meter = 0.0254;
 

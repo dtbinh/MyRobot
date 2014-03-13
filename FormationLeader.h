@@ -12,10 +12,16 @@ public:
 	void ParseRead(unsigned char * buf, size_t bytes_transferred);	
 
 private:
-	void ParseMessage(std::string msg);
 	void BroadcastLocation(std::string formationType, double x_pos, double y_pos);
-	void Movement(std::string formationType, CoorPtr goal);
+	void NotifyManager();
+	void ParseMessage(std::string msg);
+	void Move(std::string formationType, const Coordinate & goal);
+	void handle_timerWalk(const boost::system::error_code& error, bool bProcessingTask);
+
+	void Resume(bool bProcessingTask);
 
 private:
 	std::string formationMsg_;
+	Coordinate goal_;
+	boost::asio::deadline_timer timerWalk_;
 };
