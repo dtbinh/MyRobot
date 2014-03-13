@@ -1,9 +1,10 @@
 #pragma once
+#include "CommPoint.h"
 
-class Manager
+class Manager : public CommPoint
 {
 public:
-	Manager();
+	Manager(boost::asio::io_service & io_service);
 	~Manager();
 	
 };

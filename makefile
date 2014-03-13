@@ -21,15 +21,15 @@ CFG_INC=-I$(player_inc) -I$(boost_inc)
 CFG_LIB=$(player_lib) $(boost_lib) 
 CFG_OBJ=
 COMMON_OBJ=$(OUTDIR)/MyRobot.o $(OUTDIR)/UdpSession.o $(OUTDIR)/CommPoint.o $(OUTDIR)/RobotFactory.o $(OUTDIR)/Robot.o $(OUTDIR)/LaserRobot.o \
-$(OUTDIR)/Leader.o $(OUTDIR)/Follower.o $(OUTDIR)/Coordinate.o $(OUTDIR)/Centralization.o $(OUTDIR)/Aggregator.o $(OUTDIR)/Dispersor.o 
+$(OUTDIR)/FormationLeader.o $(OUTDIR)/FormationFollower.o $(OUTDIR)/Coordinate.o 
 
 OBJ=$(COMMON_OBJ) $(CFG_OBJ)
 ALL_OBJ=$(COMMON_OBJ) $(CFG_LIB) 
 
-#COMPILE=$(compiler) -c "-D$(preDef)" -g -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
-#LINK=$(linker)  -g -o "$(OUTFILE)" $(ALL_OBJ)
-COMPILE=$(compiler) -c "-D$(preDef)" -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
-LINK=$(linker)  -o "$(OUTFILE)" $(ALL_OBJ)
+COMPILE=$(compiler) -c "-D$(preDef)" -g -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
+LINK=$(linker)  -g -o "$(OUTFILE)" $(ALL_OBJ)
+#COMPILE=$(compiler) -c "-D$(preDef)" -o "$(OUTDIR)/$(*F).o" $(CFG_INC) $<
+#LINK=$(linker)  -o "$(OUTFILE)" $(ALL_OBJ)
 
 # Pattern rules
 $(OUTDIR)/%.o : %.cc

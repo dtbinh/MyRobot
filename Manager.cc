@@ -1,6 +1,10 @@
 #include "Manager.h"
 
-Manager::Manager()
+const int defaultListenPort = 9001;
+const int defautBroadCastPort = 9000;
+
+Manager::Manager(boost::asio::io_service & io_service)
+:CommPoint(io_service, defaultListenPort)
 {
 
 }
