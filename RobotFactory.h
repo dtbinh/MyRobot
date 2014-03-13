@@ -6,6 +6,8 @@ const int robotLeader = 1;
 const int robotFollower = 2;
 const int robotAggregator = 3;
 const int robotDispersor = 4;
+const int robotFormationLeader = 5;
+const int robotFormationFollower = 6;
 
 class RobotFactory
 {

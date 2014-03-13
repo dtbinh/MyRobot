@@ -3,6 +3,8 @@
 #include "Follower.h"
 #include "Aggregator.h"
 #include "Dispersor.h"
+#include "FormationLeader.h"
+#include "FormationFollower.h"
 
 using namespace std;
 
@@ -36,6 +38,14 @@ Robot * RobotFactory::CreateRobot(int type, boost::asio::io_service & io_service
 
 		case robotDispersor:
 			ret = new Dispersor(io_service, host, player_port);
+			break;
+
+		case robotFormationLeader:
+			ret = new FormationLeader(io_service, host, player_port);
+			break;
+
+		case robotFormationFollower:
+			ret = new FormationFollower(io_service, host, player_port);
 			break;
 			
 		default:

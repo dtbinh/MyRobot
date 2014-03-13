@@ -5,7 +5,7 @@
 #include "CommPoint.h"
 #include "LaserRobot.h"
 
-class Centralization : public CommPoint, public LaserRobot//, public boost::enable_shared_from_this<Centralization>
+class Centralization : public CommPoint, public LaserRobot
 {
 public:
 	Centralization(boost::asio::io_service & io_service, std::string host, int player_port);

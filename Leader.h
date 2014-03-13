@@ -5,7 +5,7 @@
 
 class TimeRecorder;
 
-class Leader : public LaserRobot, public CommPoint //, public boost::enable_shared_from_this<Leader>
+class Leader : public LaserRobot, public CommPoint
 {
 public:
 	Leader(boost::asio::io_service & io_service, std::string host, int player_port);
