@@ -11,6 +11,7 @@ public:
 	~FormationFollower();
 
 	void ParseRead(unsigned char * buf, size_t bytes_transferred);
+	void Run();
 
 private:
 	void ParseMessage(std::string msg);

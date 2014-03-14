@@ -17,6 +17,7 @@ public:
 	CoorPtr CalCenter(CoorPtr other);
 
 	double getDistance(CoorPtr other);
+	double getDistance(double x_pos, double y_pos);
 	
 	double getX();
 	double getY();

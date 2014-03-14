@@ -2,6 +2,7 @@
  * formationSize is not used in this version becasue of laziness... kern 03/13/2014
  */
 #include "Diamond.h"
+#include <boost/make_shared.hpp>
 
 using namespace boost;
 
@@ -24,17 +25,17 @@ CoorPtr Diamond::CalcVertice(size_t index, CoorPtr source)
 	switch(index)
 	{
 		case 1:
-			x -= interval;
-			y -= interval;
+			x -= interval_;
+			y -= interval_;
+			break;
+
+		case 2:
+			x -= interval_;
+			y += interval_;
 			break;
 
 		case 3:
-			x -= interval;
-			y += interval;
-			break
-
-		case 4:
-			x -= interval * 2;
+			x -= interval_ * 2;
 			break;
 
 		default:

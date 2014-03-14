@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     try
   	{
     	string strHost = defaultHost;
-  		int player_port = defaultPort;
+  		int player_port = defaultPlayerPort;
 
   		if (argc >= 3)
   		{
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		boost::asio::io_service::work work_(io_service_);
 
 		int robot_type = -1;
-		if (player_port == defaultPort)
+		if (player_port == defaultPlayerPort)
 		{
 			robot_type = robotFormationLeader;
 		}

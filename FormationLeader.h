@@ -10,12 +10,13 @@ public:
 	~FormationLeader();
 
 	void ParseRead(unsigned char * buf, size_t bytes_transferred);	
+	void Run();
 
 private:
 	void BroadcastLocation(std::string formationType, double x_pos, double y_pos);
 	void NotifyManager();
 	void ParseMessage(std::string msg);
-	void Move(std::string formationType, const Coordinate & goal);
+	void Move(std::string formationType, Coordinate & goal);
 	void handle_timerWalk(const boost::system::error_code& error, bool bProcessingTask);
 
 	void Resume(bool bProcessingTask);

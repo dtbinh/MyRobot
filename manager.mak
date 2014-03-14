@@ -16,12 +16,11 @@ linker=g++
 # -----End user-editable area-----
 
 OUTDIR=bin
-OUTFILE=./$(OUTDIR)/robot
+OUTFILE=./$(OUTDIR)/manager
 CFG_INC=-I$(player_inc) -I$(boost_inc) 
 CFG_LIB=$(player_lib) $(boost_lib) 
 CFG_OBJ=
-COMMON_OBJ=$(OUTDIR)/MyRobot.o $(OUTDIR)/UdpSession.o $(OUTDIR)/CommPoint.o $(OUTDIR)/RobotFactory.o $(OUTDIR)/Robot.o $(OUTDIR)/LaserRobot.o \
-$(OUTDIR)/FormationLeader.o $(OUTDIR)/FormationFollower.o $(OUTDIR)/Coordinate.o $(OUTDIR)/Formation.o $(OUTDIR)/Line.o $(OUTDIR)/Diamond.o 
+COMMON_OBJ=$(OUTDIR)/MyManager.o $(OUTDIR)/UdpSession.o $(OUTDIR)/CommPoint.o $(OUTDIR)/Manager.o $(OUTDIR)/Coordinate.o 
 
 OBJ=$(COMMON_OBJ) $(CFG_OBJ)
 ALL_OBJ=$(COMMON_OBJ) $(CFG_LIB) 

@@ -36,9 +36,14 @@ void Coordinate::setY(double y)
 	y_ = y;
 }
 
+double Coordinate::getDistance(double x_pos, double y_pos)
+{
+	return sqrt(pow((x_pos - getX()), 2) + pow((y_pos - getY()), 2));
+}
+
 double Coordinate::getDistance(CoorPtr other)
 {
-	return sqrt(pow((other->getX() - getX()), 2) + pow((other->getY() - getY()), 2));
+	return getDistance(other->getX(), other->getY());
 }
 
 CoorPtr Coordinate::CalCenter(queue<CoorPtr> others)

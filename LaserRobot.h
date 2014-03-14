@@ -8,6 +8,7 @@
 using namespace PlayerCc;
 
 const double DistacneThreshold = 1.0;
+const double baseSpeed = 1.0;
 
 class LaserRobot : public Robot
 {

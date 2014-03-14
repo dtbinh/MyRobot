@@ -36,25 +36,22 @@ void FormationLeader::NotifyManager()
     TalkToAll(finishMsg, managerBroadCastPort);
 }
 
-void FormationLeader::Move(std::string formationType, const Coordinate & goal)
+void FormationLeader::Move(std::string formationType, Coordinate & goal)
 {
 	//GoTo(goal->getX(), goal->getY());
 
     double diffY = goal.getY() - GetYPos();
     double diffX = goal.getX() - GetXPos();
     double desired_yaw = atan2(diffY, diffX) - GetYaw();
-
-    double forwardSpeed = 0.0;
+    
     if (formationType.compare(lineMsg) == 0)
     {
-        forwardSpeed = 0.5;
+        SetSpeed(baseSpeed / 2, desired_yaw);
     }
     else if (formationType.compare(diamondMsg) == 0)
     {
-        forwardSpeed = 1;
+        SetSpeed(baseSpeed, desired_yaw);
     }
-
-    SetSpeed(forwardSpeed, desired_yaw);
 }
 
 void FormationLeader::ParseMessage(string msg)
@@ -100,7 +97,7 @@ void FormationLeader::ParseRead(unsigned char * buf, size_t bytes_transferred)
 	if(bytes_transferred > 0)
 	{
 		string msg(buf, buf + bytes_transferred);
-		//cout <<"FormationLeader Receive msg: "<< msg << endl;
+		cout <<"FormationLeader Receive msg: "<< msg << endl;
 
 		ParseMessage(msg);
 	}
@@ -128,10 +125,17 @@ void FormationLeader::Resume(bool bProcessingTask)
     timerWalk_.async_wait(boost::bind(&FormationLeader::handle_timerWalk, this, boost::asio::placeholders::error, bProcessingTask));
 }
 
-void Centralization::handle_timerWalk(const boost::system::error_code& error, bool bProcessingTask)
+void FormationLeader::handle_timerWalk(const boost::system::error_code& error, bool bProcessingTask)
 {
     if (!error)
     {
         Resume(bProcessingTask);
     }
+}
+
+void FormationLeader::Run()
+{
+    cout << "FormationLeader is running" << endl;
+
+    ListenFromAll();
 }
