@@ -8,7 +8,12 @@ public:
 	Formation(double interval, size_t formationSize);
 	~Formation();
 
-	virtual CoorPtr CalcVertice(size_t index, CoorPtr source) = 0;
+	bool CalcSpeed(size_t index, double leaderSpeed, double leaderYaw, CoorPtr leader, CoorPtr self, double & outSpeed, double & outYaw);
+
+	virtual CoorPtr CalcVerticeToLeader(size_t index, CoorPtr source) = 0;
+
+protected:
+	virtual double CalcIntervalToLeader(size_t index) = 0;
 
 protected:
 	double interval_;

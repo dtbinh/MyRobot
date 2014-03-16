@@ -7,8 +7,7 @@
 
 using namespace PlayerCc;
 
-const double DistacneThreshold = 1.0;
-const double baseSpeed = 1.0;
+const int comm_interval = 1; // milliseconds
 
 class LaserRobot : public Robot
 {
@@ -29,16 +28,20 @@ protected:
 	
 	void SetSpeed(double xSpeed, double turnSpeed);
 	void SetSpeed(double xSpeed, double ySpeed, double turnSpeed);
+
+	void SetVelHead(double xSpeed, double yawHead);
 	
 	void GoTo(double x_pos, double y_pos);
+	void GoTo(player_pose2d_t pos, player_pose2d_t speed);
 
 	void Walk();
 	void Stop();
 	
+	void Read();
+	void Resume();
 	void LaserAvoidance(double & newspeed, double & newturnrate);
 	
 private:
-	void Resume();
 	void handle_timerWalk(const boost::system::error_code& error);
 
 private:

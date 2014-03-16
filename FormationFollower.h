@@ -15,8 +15,7 @@ public:
 
 private:
 	void ParseMessage(std::string msg);
-	void Move(CoorPtr destination);
-	void Movement(std::string formationType, CoorPtr leadr);
+	void Movement(std::string formationType, CoorPtr leaderPos, double leaderSpeed, double leaderYaw);
 	FormationPtr getFormation(std::string type);
 	size_t Port2Index(int port);
 

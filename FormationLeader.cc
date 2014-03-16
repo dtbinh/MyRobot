@@ -6,6 +6,9 @@ const int defaultListenPort = 9000;
 const int defautBroadCastPort = 9001;
 const int managerBroadCastPort = 9002;
 
+const double baseSpeed = 0.5;
+const double DistacneThreshold = 0.05;
+
 using namespace std;
 using namespace boost;
 
@@ -23,10 +26,10 @@ FormationLeader::~FormationLeader()
 
 }
 
-void FormationLeader::BroadcastLocation(string formationType, double x_pos, double y_pos)
+void FormationLeader::BroadcastLocation(string formationType, double x_pos, double y_pos, double speed, double yaw)
 {
 	ostringstream msg;
-	msg <<formationType<<" "<< x_pos <<" "<< y_pos;
+	msg <<formationType<<" "<< x_pos <<" "<< y_pos<<" "<<speed<<" "<<yaw;
 
 	TalkToAll(msg.str(), defautBroadCastPort);
 }
@@ -38,20 +41,16 @@ void FormationLeader::NotifyManager()
 
 void FormationLeader::Move(std::string formationType, Coordinate & goal)
 {
-	//GoTo(goal->getX(), goal->getY());
+    player_pose2d_t pos;
+    pos.px = goal.getX();
+    pos.py = goal.getY();
 
-    double diffY = goal.getY() - GetYPos();
-    double diffX = goal.getX() - GetXPos();
-    double desired_yaw = atan2(diffY, diffX) - GetYaw();
-    
-    if (formationType.compare(lineMsg) == 0)
-    {
-        SetSpeed(baseSpeed / 2, desired_yaw);
-    }
-    else if (formationType.compare(diamondMsg) == 0)
-    {
-        SetSpeed(baseSpeed, desired_yaw);
-    }
+    GoTo(pos, pos);   
+
+    // double diffY = goal.getY() - GetYPos();
+    // double diffX = goal.getX() - GetXPos();
+    // double desired_yaw = atan2(diffY, diffX) - GetYaw();
+    // SetSpeed(baseSpeed, desired_yaw / comm_interval);
 }
 
 void FormationLeader::ParseMessage(string msg)
@@ -104,8 +103,10 @@ void FormationLeader::ParseRead(unsigned char * buf, size_t bytes_transferred)
 }
 
 void FormationLeader::Resume(bool bProcessingTask)
-{
-    BroadcastLocation(formationMsg_, GetXPos(), GetYPos());
+{   
+    //cout<<"Self Position : "<<GetXPos()<<" "<<GetYPos()<<" "<<GetXSpeed()<<" "<<GetYaw()<<endl;
+    BroadcastLocation(formationMsg_, GetXPos(), GetYPos(), GetXSpeed(), GetYaw());
+    
     if(goal_.getDistance(make_shared<Coordinate>(GetXPos(),GetYPos())) < DistacneThreshold)
     {
         if (bProcessingTask)
@@ -121,7 +122,7 @@ void FormationLeader::Resume(bool bProcessingTask)
         Move(formationMsg_, goal_);
     }
 
-    timerWalk_.expires_from_now(boost::posix_time::millisec(200));
+    timerWalk_.expires_from_now(boost::posix_time::millisec(comm_interval));
     timerWalk_.async_wait(boost::bind(&FormationLeader::handle_timerWalk, this, boost::asio::placeholders::error, bProcessingTask));
 }
 
@@ -129,6 +130,7 @@ void FormationLeader::handle_timerWalk(const boost::system::error_code& error, b
 {
     if (!error)
     {
+        Read();
         Resume(bProcessingTask);
     }
 }
@@ -137,5 +139,6 @@ void FormationLeader::Run()
 {
     cout << "FormationLeader is running" << endl;
 
+    Read();
     ListenFromAll();
 }

@@ -7,6 +7,8 @@ public:
 	Diamond(double interval, size_t formationSize);
 	~Diamond();
 
-	CoorPtr CalcVertice(size_t index, CoorPtr source);
+	virtual CoorPtr CalcVerticeToLeader(size_t index, CoorPtr source);
 
+protected:
+	virtual double CalcIntervalToLeader(size_t index);
 };

@@ -8,6 +8,8 @@ public:
 	Line(double interval, size_t formationSize);
 	~Line();
 
-	virtual CoorPtr CalcVertice(size_t index, CoorPtr source);
+	virtual CoorPtr CalcVerticeToLeader(size_t index, CoorPtr source);
 
+protected:
+	virtual double CalcIntervalToLeader(size_t index);
 };

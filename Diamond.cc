@@ -3,6 +3,7 @@
  */
 #include "Diamond.h"
 #include <boost/make_shared.hpp>
+#include <math.h>
 
 using namespace boost;
 
@@ -17,7 +18,7 @@ Diamond::~Diamond()
 
 }
 
-CoorPtr Diamond::CalcVertice(size_t index, CoorPtr source)
+CoorPtr Diamond::CalcVerticeToLeader(size_t index, CoorPtr source)
 {
 	double x = source->getX();
 	double y = source->getY();
@@ -26,12 +27,12 @@ CoorPtr Diamond::CalcVertice(size_t index, CoorPtr source)
 	{
 		case 1:
 			x -= interval_;
-			y -= interval_;
+			y += interval_;
 			break;
 
 		case 2:
 			x -= interval_;
-			y += interval_;
+			y -= interval_;
 			break;
 
 		case 3:
@@ -43,4 +44,28 @@ CoorPtr Diamond::CalcVertice(size_t index, CoorPtr source)
 	}
 
 	return make_shared<Coordinate>(x,y);
+}
+
+double Diamond::CalcIntervalToLeader(size_t index)
+{
+	double interval = 0;
+	switch(index)
+	{
+		case 1:
+			interval = sqrt(2) * interval_;
+			break;
+
+		case 2:
+			interval = sqrt(2) * interval_;
+			break;
+
+		case 3:
+			interval = interval_ * 2;
+			break;
+
+		default:
+			break;
+	}
+
+	return interval;
 }

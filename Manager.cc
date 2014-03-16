@@ -56,10 +56,10 @@ void Manager::SendCmd()
 	}
 	else
 	{
-		stSection cmd = waypoints_.front();
+		curSec_ = waypoints_.front();
 		waypoints_.pop();
 
-		msg <<cmd.formationType_<<" "<< cmd.waypoint_.getX() <<" "<< cmd.waypoint_.getY();
+		msg <<curSec_.formationType_<<" "<< curSec_.waypoint_.getX() <<" "<< curSec_.waypoint_.getY();
 	}
 
 	TalkToAll(msg.str(), defautBroadCastPort);
@@ -91,7 +91,9 @@ void Manager::RecordTime()
 void Manager::Report()
 {
 	boost::posix_time::time_duration msdiff = boost::posix_time::microsec_clock::local_time() - curPt_;
-	cout<<"Mission accomplished in "<<msdiff.total_milliseconds()<<" milliseconds"<<endl;
+	
+	cout<<"Mission \""<<curSec_.formationType_<<" to ("<<curSec_.waypoint_.getX()<<", "<<curSec_.waypoint_.getY()<<")\""
+	<<" accomplished in "<<msdiff.total_milliseconds()<<" milliseconds"<<endl;
 }
 
 void Manager::Run()

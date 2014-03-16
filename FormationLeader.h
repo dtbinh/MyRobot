@@ -13,7 +13,7 @@ public:
 	void Run();
 
 private:
-	void BroadcastLocation(std::string formationType, double x_pos, double y_pos);
+	void BroadcastLocation(std::string formationType, double x_pos, double y_pos, double speed, double yaw);
 	void NotifyManager();
 	void ParseMessage(std::string msg);
 	void Move(std::string formationType, Coordinate & goal);

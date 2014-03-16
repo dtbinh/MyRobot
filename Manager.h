@@ -1,7 +1,7 @@
 #pragma once
 #include "CommPoint.h"
-#include <queue>
 #include "Coordinate.h"
+#include <queue>
 
 struct stSection
 {
@@ -11,6 +11,12 @@ struct stSection
 	stSection(std::string type, Coordinate coor)
 	:formationType_(type),
 	waypoint_(coor)
+	{
+	}
+
+	stSection()
+	:formationType_(""),
+	waypoint_(0.0,0.0)
 	{
 	}
 };
@@ -35,4 +41,5 @@ private:
 private:
 	std::queue<stSection> waypoints_;
 	boost::posix_time::ptime curPt_;	
+	stSection curSec_;
 };

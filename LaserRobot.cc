@@ -64,9 +64,24 @@ void LaserRobot::SetSpeed(double xSpeed, double ySpeed, double turnSpeed)
   pp_->SetSpeed(xSpeed, ySpeed, turnSpeed);
 }
 
+void LaserRobot::SetVelHead(double xSpeed, double yawHead)
+{
+  pp_->SetVelHead(xSpeed,yawHead);
+}
+
 void LaserRobot::GoTo(double x_pos, double y_pos)
 {
   pp_->GoTo(x_pos,y_pos, 0);
+}
+
+void LaserRobot::GoTo(player_pose2d_t pos, player_pose2d_t speed)
+{
+  pp_->GoTo(pos, speed);
+}
+
+void LaserRobot::Read()
+{
+  robot_->Read();
 }
 
 void LaserRobot::LaserAvoidance(double & newspeed, double & newturnrate)

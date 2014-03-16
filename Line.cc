@@ -17,7 +17,7 @@ Line::~Line()
 
 }
 
-CoorPtr Line::CalcVertice(size_t index, CoorPtr source)
+CoorPtr Line::CalcVerticeToLeader(size_t index, CoorPtr source)
 {
 	double x = source->getX();
 	double y = source->getY();
@@ -25,17 +25,42 @@ CoorPtr Line::CalcVertice(size_t index, CoorPtr source)
 	switch(index)
 	{
 		case 1:
-			y -= interval_;
-			break;
-
-		case 2:
 			y += interval_;
 			break;
 
+		case 2:
+			y -= interval_;
+			break;
+
 		case 3:
-			y += interval_ * 2;
+			y -= interval_ * 2;
 			break;
 	}
 
 	return make_shared<Coordinate>(x,y);
+}
+
+double Line::CalcIntervalToLeader(size_t index)
+{	
+	double interval = 0;
+
+	switch(index)
+	{
+		case 1:
+			interval = interval_;
+			break;
+
+		case 2:
+			interval = interval_;
+			break;
+
+		case 3:
+			interval = interval_ * 2;
+			break;
+
+		default:
+			break;
+	}
+
+	return interval;
 }

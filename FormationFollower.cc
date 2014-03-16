@@ -1,7 +1,6 @@
 #include "FormationFollower.h"
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
-#include <boost/math/constants/constants.hpp>
 #include "Line.h"
 #include "Diamond.h"
 
@@ -11,7 +10,7 @@ const int defautBroadCastPort = 9000;
 using namespace std;
 using namespace boost;
 
-const double robot_interval = 1.0;
+const double robot_interval = 1;
 const size_t robot_size = 4;
 
 FormationFollower::FormationFollower(boost::asio::io_service & io_service, std::string host, int player_port)
@@ -41,46 +40,21 @@ FormationPtr FormationFollower::getFormation(string type)
     return ret;
 }
 
-void FormationFollower::Movement(std::string formationType, CoorPtr leadr)
+void FormationFollower::Movement(string formationType, CoorPtr leaderPos, double leaderSpeed, double leaderYaw)
 {
-    CoorPtr destination = getFormation(formationType)->CalcVertice(Port2Index(MyPort_), leadr);
-    double distacne = destination->getDistance(make_shared<Coordinate>(GetXPos(),GetYPos()));
-    if(distacne < DistacneThreshold)
+    FormationPtr formation = getFormation(formationType);
+
+    double speed = 0.0;
+    double yaw = 0.0;
+    if(formation->CalcSpeed(Port2Index(MyPort_), leaderSpeed, leaderYaw, leaderPos, make_shared<Coordinate>(GetXPos(),GetYPos()), speed, yaw))
     {
-        Stop();
+        SetSpeed(leaderSpeed, leaderYaw);
     }
     else
     {
-        Move(destination);    
-    }
-}
 
-void FormationFollower::Move(CoorPtr destination)
-{
-    double diffY = destination->getY() - GetYPos();
-    double diffX = destination->getX() - GetXPos();
-    double desired_yaw = atan2(diffY, diffX);
-
-    double min_yaw = math::constants::pi<double>() / -2;
-    double max_yaw = math::constants::pi<double>() / 2;
-    if (desired_yaw < min_yaw)
-    {
-        desired_yaw = min_yaw;
+        SetSpeed(speed, (yaw - GetYaw()) / 2);
     }
-    else if (desired_yaw > max_yaw)
-    {
-        desired_yaw = max_yaw;
-    }
-
-    double distance = destination->getDistance(GetYPos(), GetYPos());
-    if (distance > robot_interval)
-    {
-        SetSpeed(baseSpeed * 2, desired_yaw - GetYaw());
-    }
-    else 
-    {
-        SetSpeed(baseSpeed, desired_yaw - GetYaw());
-    }    
 }
 
 void FormationFollower::ParseMessage(string msg)
@@ -88,7 +62,7 @@ void FormationFollower::ParseMessage(string msg)
     vector<string> strs;
     split(strs, msg, boost::is_any_of(" "));
 
-    if (strs.size() == 3)
+    if (strs.size() == 5)
     {
         if (strs[0].compare(lineMsg) == 0 || strs[0].compare(diamondMsg) == 0 || strs[0].compare(stopMsg) == 0)
         {
@@ -96,8 +70,10 @@ void FormationFollower::ParseMessage(string msg)
             {
                 double x = lexical_cast<double>(strs[1]);
                 double y = lexical_cast<double>(strs[2]);
+                double speed = lexical_cast<double>(strs[3]);
+                double yaw = lexical_cast<double>(strs[4]);
 
-                Movement(strs[0], make_shared<Coordinate>(x,y));
+                Movement(strs[0], make_shared<Coordinate>(x,y), speed, yaw);
             }
             catch(const bad_lexical_cast & e)
             {       
@@ -116,8 +92,9 @@ void FormationFollower::ParseRead(unsigned char * buf, size_t bytes_transferred)
 	if(bytes_transferred > 0)
 	{
 		string msg(buf, buf + bytes_transferred);
-		cout <<"FormationFollower Receive msg: "<< msg << endl;
+		//cout <<"FormationFollower Receive msg: "<< msg << endl;
 
+        Read();
 		ParseMessage(msg);
 	}
 }
@@ -126,5 +103,6 @@ void FormationFollower::Run()
 {
     cout << "FormationFollower is running" << endl;
 
+    Read();
     ListenFromAll();
 }
