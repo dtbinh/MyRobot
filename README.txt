@@ -16,6 +16,6 @@ Compile:
 Execute:
 1.There are already two executable file ¡°robot¡± and "manager" in the bin\ folder, which can be executed on a 32bit Linux system. 
 2.Execute robot program as ¡°./robot 6665 ¡± and ¡°./robot 666x¡±, 6665 is the leader and others are follower.
-3.Or there is a script files ¡°createRobot.sh¡± and¡±create_Brobot.sh¡± in the ¡°MyRobot¡± folder, which can create the 4 robots one time.
-4.Execute manager program as "./manger", then input the waypints, use "quit" to end the input.
-5.Or Execute manger program as "./manger default", it will input the 3 default waypints for you.
+3.Or there is a script files ¡°createRobot.sh¡± in the ¡°MyRobot¡± folder, which can create the 4 robots one time.
+4.Execute manager program as "./manger", then input the waypoints, use "quit" to end the input.
+5.Or Execute manger program as "./manger default", it will input the 3 default wayoints for you.
