@@ -14,6 +14,7 @@ public:
 	void Run();
 
 private:
+	void BroadcastLocation(double x_pos, double y_pos);
 	void ParseMessage(std::string msg);
 	void Movement(std::string formationType, CoorPtr leaderPos, double leaderSpeed, double leaderYaw);
 	FormationPtr getFormation(std::string type);

@@ -2,13 +2,17 @@
 #include <boost/shared_ptr.hpp>
 #include "Coordinate.h"
 
+const double robot_interval = 1.0;
+const size_t robot_size = 4;
+const double DistacneThreshold = 0.1;
+
 class Formation
 {
 public:
 	Formation(double interval, size_t formationSize);
 	~Formation();
 
-	bool CalcSpeed(size_t index, double leaderSpeed, double leaderYaw, CoorPtr leader, CoorPtr self, double & outSpeed, double & outYaw);
+	bool CalcSpeed(size_t index, double curYaw, double leaderSpeed, double leaderYaw, CoorPtr leader, CoorPtr self, double & outSpeed, double & outYaw);
 
 	virtual CoorPtr CalcVerticeToLeader(size_t index, CoorPtr source) = 0;
 

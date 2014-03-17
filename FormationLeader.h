@@ -1,7 +1,9 @@
 #pragma once
+#include <boost/unordered_map.hpp>
 #include "LaserRobot.h"
 #include "CommPoint.h"
 #include "Coordinate.h"
+#include "Formation.h"
 
 class FormationLeader : public LaserRobot, public CommPoint
 {
@@ -18,11 +20,19 @@ private:
 	void ParseMessage(std::string msg);
 	void Move(std::string formationType, Coordinate & goal);
 	void handle_timerWalk(const boost::system::error_code& error, bool bProcessingTask);
+	void AdjustSpeed(int port, CoorPtr follower);
+	FormationPtr getFormation(std::string type);
+	size_t Port2Index(int port);
 
 	void Resume(bool bProcessingTask);
 
+	void Speeder(double limitation);
+	void Slowdown(double limitation);
+
 private:
-	std::string formationMsg_;
+	double myspeed_;
 	Coordinate goal_;
+	std::string formationMsg_;
 	boost::asio::deadline_timer timerWalk_;
+	boost::unordered_map<std::string, FormationPtr> formations_;
 };

@@ -3,8 +3,6 @@
 
 using namespace boost;
 
-const double DistacneThreshold = 0.05;
-
 Formation::Formation(double interval, size_t formationSize)
 :interval_(interval),
 formationSize_(formationSize)
@@ -17,28 +15,36 @@ Formation::~Formation()
 
 }
 
-bool Formation::CalcSpeed(size_t index, double leaderSpeed, double leaderYaw, CoorPtr leader, CoorPtr self, double & outSpeed, double & outYaw)
+bool Formation::CalcSpeed(size_t index, double curYaw, double leaderSpeed, double leaderYaw, CoorPtr leader, CoorPtr self, double & outSpeed, double & outYaw)
 {
-	double interval = CalcIntervalToLeader(index);
-	double distance2leader = leader->getDistance(self);	
-	outSpeed = pow((distance2leader / interval),2) * leaderSpeed;
+    CoorPtr destination = CalcVerticeToLeader(index, leader);
 
-	CoorPtr destination = CalcVerticeToLeader(index, leader);
+	double distanceDesired2leader = CalcIntervalToLeader(index);
+	double distance2leader = leader->getDistance(self);	
+    double distance2destination = destination->getDistance(self);
+	outSpeed = leaderSpeed + (distance2destination / distanceDesired2leader) * leaderSpeed; 
+
 	double diffY = destination->getY() - self->getY();
     double diffX = destination->getX() - self->getX();   
     double min_yaw = math::constants::pi<double>() / -2;
     double max_yaw = math::constants::pi<double>() / 2;
-    outYaw = atan2(diffY, diffX);
-    if (outYaw < min_yaw)
+    double desiedYaw = atan2(diffY, diffX);
+    if (desiedYaw < min_yaw)
     {
-        outYaw = min_yaw;
-        outSpeed = 0.0;
+        desiedYaw = min_yaw;
+        outSpeed = 0.2;
     }
-    else if (outYaw > max_yaw)
+    else if (desiedYaw > max_yaw)
     {
-        outYaw = max_yaw;
-        outSpeed = 0.0;
+        desiedYaw = max_yaw;
+        outSpeed = 0.2;
     }
 
-    return destination->getDistance(self) < DistacneThreshold;
+    outYaw = (desiedYaw - curYaw);
+    if (distance2destination < interval_)
+    {
+        outYaw *= distance2destination / interval_;
+    }
+
+    return distance2destination < DistacneThreshold;
 }

@@ -23,7 +23,7 @@ int ParseInput(string & msg, Manager & mng)
 	using namespace boost;
 
 	vector<string> strs;
-    split(strs, msg, boost::is_any_of(" "));
+    split(strs, msg, boost::is_any_of(","));
 
     if (strs.size() == 2)
     {
@@ -33,6 +33,7 @@ int ParseInput(string & msg, Manager & mng)
             double y = lexical_cast<double>(strs[1]);
 
             mng.AddWayPoint(x, y);
+            cout<<"add waypint ("<<x<<", "<<y<<") successfully"<<endl<<endl;
         }
         catch(const bad_lexical_cast & e)
         {       
@@ -41,13 +42,13 @@ int ParseInput(string & msg, Manager & mng)
     } 
     else
     {
-        cerr<<"invalid recv msg : "<<endl;
+        cerr<<"invalid recv msg : "<<msg<<endl;
     }
 }
 
 int GetInput(Manager & mng)
 {
-	cout<<"input a waypoint as \"x.xx y.yy\", type \""<<strQuit<<"\" to end input, type \""<<strDefault<<"\" to add three default waypoints"<<endl;
+	cout<<"input a waypoint as \"xx.xx,yy.yy\", type \""<<strQuit<<"\" to end input, type \""<<strDefault<<"\" to add three default waypoints"<<endl;
 
 	string input;
 	cin >> input;

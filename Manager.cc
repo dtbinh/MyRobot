@@ -63,6 +63,7 @@ void Manager::SendCmd()
 	}
 
 	TalkToAll(msg.str(), defautBroadCastPort);
+	cout<<"Send Cmd : \""<<msg.str()<<"\""<<endl;
 
 	RecordTime();
 }

@@ -10,9 +10,6 @@ const int defautBroadCastPort = 9000;
 using namespace std;
 using namespace boost;
 
-const double robot_interval = 1;
-const size_t robot_size = 4;
-
 FormationFollower::FormationFollower(boost::asio::io_service & io_service, std::string host, int player_port)
 :LaserRobot(io_service, host, player_port),
 CommPoint(io_service, defaultListenPort),
@@ -40,20 +37,33 @@ FormationPtr FormationFollower::getFormation(string type)
     return ret;
 }
 
+void FormationFollower::BroadcastLocation(double x_pos, double y_pos)
+{
+    ostringstream msg;
+    msg <<MyPort_<<":"<< x_pos <<","<< y_pos;
+
+    TalkToAll(msg.str(), defautBroadCastPort);
+}
+
 void FormationFollower::Movement(string formationType, CoorPtr leaderPos, double leaderSpeed, double leaderYaw)
 {
     FormationPtr formation = getFormation(formationType);
+    CoorPtr destination = formation->CalcVerticeToLeader(Port2Index(MyPort_), leaderPos);
 
-    double speed = 0.0;
-    double yaw = 0.0;
-    if(formation->CalcSpeed(Port2Index(MyPort_), leaderSpeed, leaderYaw, leaderPos, make_shared<Coordinate>(GetXPos(),GetYPos()), speed, yaw))
+    if (destination->getDistance(make_shared<Coordinate>(GetXPos(),GetYPos())) < DistacneThreshold)
     {
         SetSpeed(leaderSpeed, leaderYaw);
     }
     else
     {
-
-        SetSpeed(speed, (yaw - GetYaw()) / 2);
+        if (formationType.compare(stopMsg) != 0 && destination->getX() < GetXPos())
+        {
+            SetSpeed(0.1, leaderYaw);
+        }
+        else
+        {
+            GoTo(destination->getX(), destination->getY());
+        }
     }
 }
 
@@ -74,6 +84,8 @@ void FormationFollower::ParseMessage(string msg)
                 double yaw = lexical_cast<double>(strs[4]);
 
                 Movement(strs[0], make_shared<Coordinate>(x,y), speed, yaw);
+
+                BroadcastLocation(GetXPos(), GetYPos());
             }
             catch(const bad_lexical_cast & e)
             {       
